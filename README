@@ -1,0 +1,25 @@
+Installation:
+
+https://elchacaldelutero@github.com/elchacaldelutero/myvim.git
+
+Create symlinks:
+
+ln -s ~/.vim/vimrc ~/.vimrc
+
+Switch to the `~/.vim` directory, and fetch submodules:
+
+cd ~/.vim
+git submodule init
+git submodule update
+
+
+How To install new bundles (vim plugins)
+
+cd ~/.vim
+mkdir ~/.vim/bundle
+git submodule add {plugin_uri}
+git add .
+git commit -m "ADD {plugin_name}"
+
+NOTE
+pathogen needs to be updated manually
