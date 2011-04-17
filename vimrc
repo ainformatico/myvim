@@ -49,3 +49,6 @@ endif
 " maps
 " paste from OS
 map <F12> "+gP
+map <F9> "+y
+map <F3> :bp<RETURN>
+map <F4> :bn<RETURN>
