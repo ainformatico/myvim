@@ -49,6 +49,9 @@ endif
 " maps
 " paste from OS
 map <F12> "+gP
+" yank to OS
 map <F9> "+y
+" prev buffer
 map <F3> :bp<RETURN>
+" next buffer
 map <F4> :bn<RETURN>
