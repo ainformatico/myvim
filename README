@@ -23,3 +23,10 @@ git commit -m "ADD {plugin_name}"
 
 NOTE
 pathogen needs to be updated manually
+
+Installation script
+- This will replace all snipmate snippets with my-snippets/ snippets.
+- Init git submodules.
+- Create symlinks.
+
+run sh install.sh
