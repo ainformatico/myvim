@@ -49,7 +49,7 @@ snippet docx
 ######################## html
 snippet html
 	<html>
-	${1}
+		${1}
 	</html>
 snippet xhtml
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="${1}" lang=${2}es">
@@ -63,7 +63,7 @@ snippet body
 snippet head
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<!-- <base href="http://www.example.com/" /> --
+		<!-- <base href="http://www.example.com/" /> -->
 		<meta name="Title" content="Example Website" />
 		<meta name="Author" content="Example employee" />
 		<meta name="Description" content="Brief website description" />
@@ -74,8 +74,7 @@ snippet head
 		<meta name="Robots" content="All" />
 		<!-- <meta name="Robots" content="noindex, nofollow" /> -->
 		<meta name="Copyright" content="Copyright Example 2010" />
-		<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>
-			${2}
+		<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>${2}
 	</head>
 snippet title
 	<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>${2}
