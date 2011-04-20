@@ -37,6 +37,7 @@ set laststatus=2 " always show status line
 set smartcase " if there are caps, go case-sensitive
 set omnifunc=on " autocomplete function
 set completeopt=menu,preview " autocomplete function
+set scrolloff=3 " lines before EOF
 " highlight spaces
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 autocmd BufWinEnter * match ExtraWhitespace /^\t*\zs \+\|\s$/
@@ -55,3 +56,8 @@ map <F9> "+y
 map <F3> :bp<RETURN>
 " next buffer
 map <F4> :bn<RETURN>
+" switch to buffe, if the target buffer is already displayed in a window or tab, that window will be displayed,
+  " otherwise, the current window will be vsplit
+set switchbuf=usetab
+nnoremap <F8> :sbnext<CR>
+nnoremap <S-F8> :sbprevious<CR>
