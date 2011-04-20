@@ -117,31 +117,44 @@ snippet movie
 			pluginspage="http://www.apple.com/quicktime/download/"
 		`Close()[1:]`>
 	</object>${6}
+######################### headers
+snippet h1
+	<h1>${1}</h1>${2}
+snippet h2
+	<h2>${1}</h2>${2}
+snippet h3
+	<h3>${1}</h3>${2}
+snippet h4
+	<h4>${1}</h4>${2}
+snippet h5
+	<h5>${1}</h5>${2}
+snippet h6
+	<h6>${1}</h6>${2}
 ######################### forms
+snippet form
+	<form action="${1:#}" method="${2:post}" accept-charset="utf-8">
+		${3}
+	</form>
 snippet fieldset
 	<fieldset>
 		<legend>${1}</legend>
 		${2}
 	</fieldset>
-snippet form
-	<form action="${1:`Filename('$1_submit')`}" method="${2:post}" accept-charset="utf-8">
-		${3}
-	</form>
-snippet h1
-	<h1>${1}</h1>
+snippet legend
+	<legend>${1}</legend>${2}
 snippet input
-	<input type="${1:text/password/submit/hidden/button/radio/checkbox}" name="${2}" value="${3} />${4}
+	<input type="${1:text/password/submit/hidden/button/radio/checkbox}" name="${2}" value="${3}" />${4}
 snippet label
-	<label for="${1:$1}">${2:name}</label>
-	<input type="${3:text/password/submit/hidden/button/radio/checkbox}" name="${4:$1}" value="${5}" id="${6:$1} />${7}
+	<label for="${1:name}">${2:name}</label>
+	<input type="${3:text/password/submit/hidden/button/radio/checkbox}" name="${4:$1}" value="${5}" id="${6:$1}" />${7}
 snippet meta
-	<meta name="${1}" content="${2} />${3}
+	<meta name="${1}" content="${2}" />${3}
 snippet opt
 	<option value="${1:#}">${2}</option>${3}
 snippet select
-	<select name="${1}" id="${2:$1}">
-		<option value="${3:#}">${4}</option>
-	</select>${5}
+	<select name="${1:name}" id="${2:$1}">
+		<option value="${3:#}">${4}</option>${5}
+	</select>
 snippet textarea
 	<textarea name="${1}" rows="${2:8}" cols="${3:40}">${4}</textarea>${5}
 snippet item
@@ -153,46 +166,57 @@ snippet actions
 		${1}
 	</p>
 snippet srelated
-	<span class="srelated">${1}</span>
+	<span class="srelated">${1}</span>${2}
 ######################### tables
 snippet table
-	<table border="${1:0}">
+	<table border="${1:1}">
 		<thead>
 			<tr>
-					<th>${1}</th>
+					<th>${1}</th>${2}
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td>${2}</td>
+				<td>${3}</td>${4}
 			</tr>
 		</tbody>
-	</table>${3}
+	</table>
+snippet th
+	<th>${1}</th>${2}
 snippet tr
-	<tr>${1}</tr>
+	<tr>${1}</tr>${2}
 snippet td
-	<td>${1}</td>
+	<td>${1}</td>${2}
+snippet caption
+	<caption>${1}</caption>${2}
 ######################### comments
 snippet sf
-	<!-- #${1} -->
-	<!-- #EOF ${2} -->
+	<!-- #${1:name} -->
+	<!-- EOF #${2:$1} -->${3}
 snippet cm
-	<!-- ${1} -->
-#########################  common
-snippet a
-	<a href="#">${1}</a>
-snippet p
-	<p>
-		${1}
-	</p>
-snippet span
-	<span>${1}</span>
+	<!-- ${1} -->${2}
+######################### lists
+snippet ul
+	<ul>
+		<li>${1}</li>${2}
+	</ul>
+snippet li
+	<li>${1}</li>${2}
 snippet dl
 	<dl>
 		<dt>${1}</dt>
-			<dd>${2}</dd>
+			<dd>${2}</dd>${3}
 	</dl>
 snippet dt
-	<dt>${1}</dt>
+	<dt>${1}</dt>${2}
 snippet dd
-	<dd>${1}</dd>
+	<dd>${1}</dd>${2}
+#########################  common
+snippet a
+	<a href="#">${1}</a>${2}
+snippet p
+	<p>
+		${1}
+	</p>${2}
+snippet span
+	<span>${1}</span>${2}
