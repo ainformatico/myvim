@@ -38,6 +38,8 @@ set smartcase " if there are caps, go case-sensitive
 set omnifunc=on " autocomplete function
 set completeopt=menu,preview " autocomplete function
 set scrolloff=3 " lines before EOF
+"closetag plugin
+au Filetype html,xml,xsl source ~/.vim/bundle/closetag/plugin/closetag.vim
 " highlight spaces
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 autocmd BufWinEnter * match ExtraWhitespace /^\t*\zs \+\|\s$/
