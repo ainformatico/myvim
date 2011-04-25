@@ -61,3 +61,12 @@ map <F4> :bn<RETURN>
 set switchbuf=usetab
 nnoremap <F8> :sbnext<CR>
 nnoremap <S-F8> :sbprevious<CR>
+" c options
+" compile current file
+map <F8> :make %:r <RETURN>
+" go to next error
+map <F7> :cn <RETURN>
+" go to prev error
+map <F6> :cp <RETURN>
+" open error list
+map <F5> :cope <RETURN>
