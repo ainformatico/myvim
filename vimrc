@@ -14,7 +14,7 @@ set ruler " show line position
 set autoindent " code autoindent
 set cindent " advanced indent
 set smartindent " advanced indent
-set history=300 " history length
+set history=2000 " history length
 set showcmd " show mode
 set list " show hidden chars
 set listchars=tab:^T,eol:¬ " hidden chars representations
@@ -38,11 +38,14 @@ set smartcase " if there are caps, go case-sensitive
 set omnifunc=on " autocomplete function
 set completeopt=menu,preview " autocomplete function
 set scrolloff=3 " lines before EOF
-"closetag plugin
-au Filetype html,xml,xsl source ~/.vim/bundle/closetag/plugin/closetag.vim
+" save and load folds
+autocmd BufWinLeave * silent! mkview
+autocmd BufWinEnter * silent! loadview
+" closetag plugin
+autocmd Filetype html,xml,xsl source ~/.vim/bundle/closetag/plugin/closetag.vim
 " highlight spaces
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-autocmd BufWinEnter * match ExtraWhitespace /^\t*\zs \+\|\s$/
+autocmd VimEnter * match ExtraWhitespace /^\t*\zs \+\|\s$/
 autocmd BufWinLeave * call clearmatches()
 " gui options
 if has("gui_running")
