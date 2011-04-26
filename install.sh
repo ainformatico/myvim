@@ -27,15 +27,15 @@ echo "Created symlink to $LOCALVIMRCFILE"
 # replace snippets
 for file in `ls $CUSTOMSNIPPETS`
 do
- if [ -f $SNIPMATEDIR$file ]
- then
-  # move existent snippets to $TMPDIR dir
-  mv $SNIPMATEDIR$file $TMPDIR
-  echo "Moved $SNIPMATEDIR$file to $TMPDIR$file"
+  if [ -f $SNIPMATEDIR$file ]
+  then
+    # move existent snippets to $TMPDIR dir
+    mv $SNIPMATEDIR$file $TMPDIR
+    echo "Moved $SNIPMATEDIR$file to $TMPDIR$file"
+  fi
   # create symlinks to new snippets
   ln -s $CUSTOMSNIPPETS$file $SNIPMATEDIR$file
   echo "Created synlink to $SNIPMATEDIR$file"
-fi
 done
 
 echo "\nDone.\n"
