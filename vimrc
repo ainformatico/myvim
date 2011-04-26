@@ -45,7 +45,7 @@ autocmd BufWinEnter * silent! loadview
 autocmd Filetype html,xml,xsl source ~/.vim/bundle/closetag/plugin/closetag.vim
 " highlight spaces
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-autocmd VimEnter * match ExtraWhitespace /^\t*\zs \+\|\s$/
+autocmd BufWinEnter * match ExtraWhitespace /^\t*\zs \+\|\s$/
 autocmd BufWinLeave * call clearmatches()
 " gui options
 if has("gui_running")
