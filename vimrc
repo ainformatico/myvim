@@ -68,10 +68,10 @@ nnoremap <F8> :sbnext<CR>
 nnoremap <S-F8> :sbprevious<CR>
 " c options
 " compile current file
-map <F8> :make %:r <RETURN>
+map <F7> :make %:r <RETURN>
 " go to next error
-map <F7> :cn <RETURN>
+map <F6> :cn <RETURN>
 " go to prev error
-map <F6> :cp <RETURN>
+map <S-F6> :cp <RETURN>
 " open error list
 map <F5> :cope <RETURN>
