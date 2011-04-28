@@ -217,6 +217,13 @@ snippet gt
 	&gt;${1}
 snippet nb
 	&nbsp;${1}
+#########################  rb
+snippet rb
+	<% ${1} %>${2}
+snippet orb
+	<%= ${1} %>${2}
+snippet render
+	<%= render '${1}' %>${2}
 #########################  common
 snippet a
 	<a href="#">${1}</a>${2}
@@ -232,3 +239,5 @@ snippet pre
 	<pre>${1}</pre>${2}
 snippet strong
 	<strong>${1}</strong>
+snippet img
+	<img src="${1:#}" alt="${2}" />${3}
