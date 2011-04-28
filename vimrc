@@ -61,7 +61,9 @@ map <F9> "+y
 map <F3> :bp<RETURN>
 " next buffer
 map <F4> :bn<RETURN>
-" switch to buffe, if the target buffer is already displayed in a window or tab, that window will be displayed,
+" search and replace selected text
+vnoremap <C-h> "hy:%s/<C-r>h//gc<left><left><left>
+" switch to buffer, if the target buffer is already displayed in a window or tab, that window will be displayed,
   " otherwise, the current window will be vsplit
 set switchbuf=usetab
 nnoremap <F8> :sbnext<CR>
