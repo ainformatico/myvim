@@ -49,6 +49,7 @@ autocmd BufWinEnter * match ExtraWhitespace /^\t*\zs \+\|\s$/
 autocmd BufWinLeave * call clearmatches()
 " gui options
 if has("gui_running")
+  colorscheme desert " colorscheme
   set lines=999 columns=999 " Maximize gvim window.
   set guifont=Monospace\ 9 " gui font
 endif
