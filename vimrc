@@ -12,7 +12,7 @@ set ignorecase " case unsensitive search
 set nocompatible " remove vi backwards compatibility
 set ruler " show line position
 set autoindent " code autoindent
-set cindent " advanced indent
+"set cindent " advanced strict indent, useful in c files not in sass i.e
 set smartindent " advanced indent
 set history=2000 " history length
 set showcmd " show mode
@@ -33,6 +33,9 @@ set mouse=a " enable mouse
 set clipboard=unnamed " advanced clipboard
 set cursorline " highlight current line
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+set cursorcolumn " show colum cursor
+" terminal color for column cursor
+hi CursorColumn ctermbg=4
 set laststatus=2 " always show status line
 set smartcase " if there are caps, go case-sensitive
 set omnifunc=on " autocomplete function
