@@ -38,6 +38,12 @@ set smartcase " if there are caps, go case-sensitive
 set omnifunc=on " autocomplete function
 set completeopt=menu,preview " autocomplete function
 set scrolloff=3 " lines before EOF
+" gui options
+if has("gui_running")
+  colorscheme desert " colorscheme
+  set lines=999 columns=999 " Maximize gvim window.
+  set guifont=Monospace\ 9 " gui font
+endif
 " save and load folds
 autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
@@ -47,12 +53,6 @@ autocmd Filetype html,xml,xsl source ~/.vim/bundle/closetag/plugin/closetag.vim
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 autocmd BufWinEnter * match ExtraWhitespace /^\t*\zs \+\|\s$/
 autocmd BufWinLeave * call clearmatches()
-" gui options
-if has("gui_running")
-  colorscheme desert " colorscheme
-  set lines=999 columns=999 " Maximize gvim window.
-  set guifont=Monospace\ 9 " gui font
-endif
 " maps
 " paste from OS
 map <F12> "+gP
