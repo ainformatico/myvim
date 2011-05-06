@@ -12,7 +12,6 @@ set ignorecase " case unsensitive search
 set nocompatible " remove vi backwards compatibility
 set ruler " show line position
 set autoindent " code autoindent
-"set cindent " advanced strict indent, useful in c files not in sass i.e
 set smartindent " advanced indent
 set history=2000 " history length
 set showcmd " show mode
@@ -56,6 +55,9 @@ autocmd Filetype html,xml,xsl source ~/.vim/bundle/closetag/plugin/closetag.vim
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 autocmd BufWinEnter * match ExtraWhitespace /^\t*\zs \+\|\s$/
 autocmd BufWinLeave * call clearmatches()
+" file specific
+" advanced strict indent, useful in c files not in sass i.e
+autocmd Filetype c,cpp set cindent
 " maps
 " paste from OS
 map <F12> "+gP
