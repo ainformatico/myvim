@@ -16,7 +16,12 @@ set smartindent " advanced indent
 set history=2000 " history length
 set showcmd " show mode
 set list " show hidden chars
-set listchars=tab:^T,eol:¬ " hidden chars representations
+" hidden chars representation
+if has('unix')
+  set listchars=tab:^T,eol:¬
+else
+  set listchars=tab:^T,eol:$
+endif
 set backup " backup files
 set backupdir=/tmp,. " backup files
 set directory=/tmp,. " swap files
@@ -44,7 +49,9 @@ set scrolloff=3 " lines before EOF
 if has("gui_running")
   colorscheme desert " colorscheme
   set lines=999 columns=999 " Maximize gvim window.
-  set guifont=Monospace\ 9 " gui font
+  if has('unix')
+    set guifont=Monospace\ 9 " gui font
+  endif
 endif
 " save and load folds
 autocmd BufWinLeave * silent! mkview
