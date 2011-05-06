@@ -142,10 +142,12 @@ snippet fieldset
 snippet legend
 	<legend>${1}</legend>${2}
 snippet input
-	<input type="${1:text/password/submit/hidden/button/radio/checkbox}" name="${2}" value="${3}" />${4}
+	<input type="${1:text/password/submit/hidden/button/radio/checkbox/image}" name="${2}" value="${3}" />${4}
+snippet submit
+	<input type="submit" value="${1}" />${2}
 snippet label
 	<label for="${1:name}">${2:name}</label>
-	<input type="${3:text/password/submit/hidden/button/radio/checkbox}" name="${4:$1}" value="${5}" id="${6:$1}" />${7}
+	<input type="${3:text}" name="${4:$1}" value="${5}" id="${6:$1}" />${7}
 snippet meta
 	<meta name="${1}" content="${2}" />${3}
 snippet opt
@@ -223,7 +225,7 @@ snippet rb
 snippet orb
 	<%= ${1} %>${2}
 snippet render
-	<%= render '${1}' %>${2}
+	<%= render '${1:/components/}' %>${2}
 #########################  common
 snippet a
 	<a href="#">${1}</a>${2}
@@ -247,3 +249,5 @@ snippet current
 	class="current"${1}
 snippet em
 	<em>${1}</em>${2}
+snippet cl
+	class="${1}"${2}
