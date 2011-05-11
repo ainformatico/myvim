@@ -44,6 +44,7 @@ set laststatus=2 " always show status line
 set smartcase " if there are caps, go case-sensitive
 set omnifunc=on " autocomplete function
 set completeopt=menu,preview " autocomplete function
+set wildmenu " command-line completion
 set scrolloff=3 " lines before EOF
 " gui options
 if has("gui_running")
