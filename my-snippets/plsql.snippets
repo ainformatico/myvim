@@ -13,7 +13,7 @@ snippet procedure
 		END;
 snippet dfunction
 	CREATE OR REPLACE FUNCTION ${1}(${2})
-		RETURN ${3};
+		RETURN ${3}
 	IS
 		${4}
 		BEGIN
@@ -22,7 +22,7 @@ snippet dfunction
 		END;
 snippet function
 	CREATE OR REPLACE FUNCTION ${1}(${2})
-		RETURN ${3};
+		RETURN ${3}
 	IS
 		BEGIN
 			${4}
