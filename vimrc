@@ -59,7 +59,9 @@ endif
 autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
 " closetag plugin
-autocmd Filetype html,xml,xsl source ~/.vim/bundle/closetag/plugin/closetag.vim
+if has('unix')
+  autocmd Filetype html,xml,xsl source ~/.vim/bundle/closetag/plugin/closetag.vim
+endif
 " highlight spaces
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 autocmd BufWinEnter * match ExtraWhitespace /^\t*\zs \+\|\s$/
