@@ -46,6 +46,7 @@ set omnifunc=on " autocomplete function
 set completeopt=menu,preview " autocomplete function
 set wildmenu " command-line completion
 set scrolloff=3 " lines before EOF
+set virtualedit=block " allow virtual editing in Visual block mode
 " gui options
 if has("gui_running")
   colorscheme desert " colorscheme
