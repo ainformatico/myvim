@@ -45,15 +45,13 @@ snippet switch
 	{
 		case ${2:case}:
 			${3:// code}
-		break;
-		${4}
+		break;${4}
 	}
 # case
 snippet case
-	case '${1:case}':
+	case ${1:case}:
 		${2:// code}
-	break;
-	${3}
+	break;${3}
 # for (...) {...}
 snippet for
 	for (var ${1:i} = 0; $1 < ${2}; $1${3:++})
