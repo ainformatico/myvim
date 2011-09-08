@@ -80,7 +80,7 @@ map <F3> :bp<RETURN>
 map <F4> :bn<RETURN>
 " comment (only in gui)
 nmap <C-c> <leader>c<space>
-nmap <C-m> <leader>cm
+nmap <C-m> <leader>cn
 " search and replace selected text
 vnoremap <C-h> "hy:%s/<C-r>h//gc<left><left><left>
 " switch to buffer, if the target buffer is already displayed in a window or tab, that window will be displayed,
