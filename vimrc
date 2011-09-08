@@ -78,7 +78,7 @@ map <F9> "+y
 map <F3> :bp<RETURN>
 " next buffer
 map <F4> :bn<RETURN>
-" comment (only in gui)
+" comment
 nmap <C-c> <leader>c<space>
 nmap <C-m> <leader>cn
 " search and replace selected text
