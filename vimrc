@@ -83,6 +83,8 @@ nmap <C-c> <leader>c<space>
 nmap <C-m> <leader>cn
 " edit
 nmap <C-b> cit
+" NERDTree
+nmap <S-T> :NERDTreeToggle<CR>
 " search and replace selected text
 vnoremap <C-h> "hy:%s/<C-r>h//gc<left><left><left>
 " switch to buffer, if the target buffer is already displayed in a window or tab, that window will be displayed,
