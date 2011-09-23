@@ -95,13 +95,13 @@ snippet base
 snippet br
 	<br />
 snippet id
-	<div id="${1}">
+	<div id="${1:id}">
 		${2}
-	</div>
+	</div> <!-- #$1 -->
 snippet class
-	<div class="${1}">
+	<div class="${1:class}">
 		${2}
-	</div>
+	</div> <!-- .$1 -->
 # Embed QT Movie
 snippet movie
 	<object width="$2" height="$3" classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B"
@@ -142,7 +142,7 @@ snippet fieldset
 snippet legend
 	<legend>${1}</legend>${2}
 snippet input
-	<input type="${1:text/password/submit/hidden/button/radio/checkbox/image}" name="${2}" value="${3}" />${4}
+	<input type="${1:text/password/submit/file/hidden/button/radio/checkbox/image}" name="${2}" value="${3}" />${4}
 snippet submit
 	<input type="submit" value="${1}" />${2}
 snippet label
