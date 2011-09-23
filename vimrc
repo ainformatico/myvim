@@ -80,7 +80,7 @@ map <F3> :bp<RETURN>
 map <F4> :bn<RETURN>
 " comment
 nmap <C-c> <leader>c<space>
-nmap <C-m> <leader>cn
+nmap <C-k> <leader>cm
 " edit
 nmap <C-b> cit
 " NERDTree
