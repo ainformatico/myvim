@@ -50,7 +50,7 @@ set virtualedit=block " allow virtual editing in Visual block mode
 " gui options
 if has("gui_running")
   colorscheme desert " colorscheme
-  set lines=999 columns=999 " Maximize gvim window.
+  "set lines=999 columns=999 " Maximize gvim window.
   if has('unix')
     set guifont=Monospace\ 9 " gui font
   endif
