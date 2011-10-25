@@ -85,8 +85,8 @@ map <F3> :bp<RETURN>
 " next buffer
 map <F4> :bn<RETURN>
 " comment
-nmap <C-c> <leader>c<space>
-nmap <C-k> <leader>cm
+map <C-c> <leader>c<space>
+map <C-k> <leader>cm
 " edit
 nmap <C-b> cit
 " NERDTree
