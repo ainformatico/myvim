@@ -148,6 +148,11 @@ snippet submit
 snippet label
 	<label for="${1:name}">${2:name}</label>
 	<input type="${3:text}" name="${4:$1}" value="${5}" id="${6:$1}" />${7}
+snippet slabel
+	<label for="${1:name}">${2:name}</label>
+	<select name="${3:$1}" id="${4:$1}" />
+		<option value="${5:#}">${6}</option>${7}
+	</select>${8}
 snippet meta
 	<meta name="${1}" content="${2}" />${3}
 snippet opt
