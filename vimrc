@@ -69,8 +69,12 @@ autocmd BufWinLeave * call clearmatches()
 " file specific
 " advanced strict indent, useful in c files not in sass i.e
 autocmd Filetype c,cpp set cindent
-" set doxygen code document style in js files
+" set doxygen code document style
 autocmd Filetype javascript set filetype=javascript.doxygen
+autocmd Filetype php set filetype=php.doxygen
+" set comment style
+autocmd Filetype php set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+autocmd Filetype php set formatoptions=croql
 " maps
 " paste from OS
 map <F12> "+gP
