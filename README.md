@@ -47,5 +47,3 @@ Included plugins
 * delimitMate <https://github.com/Raimondi/delimitMate>
 * closetag.vim <https://github.com/vim-scripts/closetag.vim>
 * vim-fugitive <https://github.com/tpope/vim-fugitive>
-
-**NOTE**: *pathogen needs to be updated manually*

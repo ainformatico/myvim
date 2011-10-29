@@ -1,3 +1,4 @@
+runtime bundle/vim-pathogen/autoload/pathogen.vim " load pathogen from custom location
 call pathogen#runtime_append_all_bundles() " pathogen start
 call pathogen#helptags() " the pathogen call search the vim plugins on bundles
 syntax enable " enables syntax highlight
