@@ -65,7 +65,7 @@ if has('unix')
 endif
 " highlight spaces
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-autocmd BufWinEnter * match ExtraWhitespace /^\t*\zs \+\|\s$/
+autocmd BufWinEnter * match ExtraWhitespace /^\t*\zs \+\|[ ]\{1,}$/
 autocmd BufWinLeave * call clearmatches()
 " file specific
 " advanced strict indent, useful in c files not in sass i.e
