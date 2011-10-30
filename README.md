@@ -25,6 +25,14 @@ Manual Installation
   2. `$ git submodule init`
   3. `$ git submodule update`
 
+Update repo and submodules
+--------------------------
+
+`$ sh update.sh`
+
+1. Pull changes from main repo, myvim
+2. Pull changes from each submodule
+
 How To install new bundles (vim plugins)
 ---------------------------------------------
 
@@ -36,6 +44,7 @@ How To install new bundles (vim plugins)
 
 Included plugins
 --------------------------
+
 * vim-pathogen <https://github.com/tpope/vim-pathogen>
 * vim-surround <https://github.com/tpope/vim-surround>
 * snipmate.vim <https://github.com/msanders/snipmate.vim>
