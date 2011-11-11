@@ -89,6 +89,8 @@ map <F4> :bn<RETURN>
 " comment
 map <C-c> <leader>c<space>
 map <C-k> <leader>cm
+" close current tab
+nmap <C-u> :tabclose<CR>`.
 " edit
 nmap <C-d> cit
 " NERDTree
