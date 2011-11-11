@@ -100,8 +100,10 @@ set switchbuf=usetab
 nnoremap <F8> :sbnext<CR>
 nnoremap <S-F8> :sbprevious<CR>
 " c options
+" execute make in current directory
+map <F7> :make<RETURN>
 " compile current file
-map <F7> :make %:r <RETURN>
+map <S-F7> :make %:r <RETURN>
 " go to next error
 map <F6> :cn <RETURN>
 " go to prev error
