@@ -90,7 +90,7 @@ map <F4> :bn<RETURN>
 map <C-c> <leader>c<space>
 map <C-k> <leader>cm
 " edit
-nmap <C-b> cit
+nmap <C-d> cit
 " NERDTree
 nmap <S-T> :NERDTreeToggle<CR>
 " search and replace selected text
