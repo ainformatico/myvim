@@ -37,7 +37,7 @@ set foldenable " enable folding
 set mouse=a " enable mouse
 set clipboard=unnamed " advanced clipboard
 set cursorline " highlight current line
-set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]%{fugitive#statusline()}
 set cursorcolumn " show colum cursor
 " terminal color for column cursor
 hi CursorColumn ctermbg=4
