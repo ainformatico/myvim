@@ -113,3 +113,5 @@ map <F6> :cn <RETURN>
 map <S-F6> :cp <RETURN>
 " open error list
 map <F5> :cope <RETURN>
+" close error list
+map <S-F5> :cclose <RETURN>
