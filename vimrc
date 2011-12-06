@@ -77,6 +77,8 @@ autocmd Filetype php set filetype=php.doxygen
 " set comment style
 autocmd Filetype php set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
 autocmd Filetype php set formatoptions=croql
+" delete fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
 " maps
 " paste from OS
 map <F12> "+gP
