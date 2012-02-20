@@ -18,7 +18,7 @@ Manual Installation
 --------------------------
 
 1. Clone repo and create a symbolic link to `vimrc` file
-  1. `$ git clone https://github.com/elchacaldelutero/myvim.git ~/.vim/`
+  1. `$ git clone https://github.com/ainformatico/myvim.git ~/.vim/`
   2. `$ ln -s ~/.vim/vimrc ~/.vimrc`
 2. Switch to the `~/.vim` directory, and fetch submodules
   1. `$ cd ~/.vim`
