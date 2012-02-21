@@ -117,3 +117,9 @@ map <S-F6> :cp <RETURN>
 map <F5> :cope <RETURN>
 " close error list
 map <S-F5> :cclose <RETURN>
+" use grep to find TODO
+nmap \t <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
+\ --exclude-dir=.git "TODO" * <CR> :copen <CR>
+" use grep to find FIXME
+nmap \f <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
+\ --exclude-dir=.git "FIX(ME)?" * <CR> :copen <CR>
