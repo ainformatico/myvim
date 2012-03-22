@@ -70,6 +70,8 @@ highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 autocmd BufWinEnter * match ExtraWhitespace /^\t*\zs \+\|[ ]\{1,}$/
 autocmd BufWinLeave * call clearmatches()
 " file specific
+" set markdown fieltype
+autocmd BufWinEnter *.md silent! set ft=markdown
 " advanced strict indent, useful in c files not in sass i.e
 autocmd Filetype c,cpp set cindent
 " set doxygen code document style
