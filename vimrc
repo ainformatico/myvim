@@ -56,6 +56,7 @@ if has("gui_running")
   if has('unix')
     set guifont=Monospace\ 9 " gui font
   endif
+  set guioptions=aAeirL " remove unused menus
 endif
 " save and load folds
 autocmd BufWinLeave * silent! mkview
