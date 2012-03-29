@@ -126,3 +126,11 @@ nmap \t <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
 " use grep to find FIXME
 nmap \f <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
 \ --exclude-dir=.git "FIX(ME)?" * <CR> :copen <CR>
+
+" tmux will send xterm-style keys when its xterm-keys option is on
+if &term =~ '^screen'
+  execute "set <xUp>=\e[1;*A"
+  execute "set <xDown>=\e[1;*B"
+  execute "set <xRight>=\e[1;*C"
+  execute "set <xLeft>=\e[1;*D"
+endif
