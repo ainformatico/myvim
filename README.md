@@ -6,7 +6,7 @@ My vim configuration file, snippets and plugins.
 Installation script
 --------------------------
 
-`$ sh install.sh`
+`$ ./install.sh`
 
 1. Fetch submodules
 2. Backup your old `vimrc` to `/tmp`, if exists
