@@ -38,4 +38,4 @@ do
   echo "Created synlink to $SNIPMATEDIR$file"
 done
 
-echo "\nDone.\n"
+echo -e "\nDone.\n"

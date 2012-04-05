@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo "\nUpdating....\n"
+echo -e "\nUpdating....\n"
 # pull changes from main repo
 git pull origin master
 # pull changes from each submodules
 git submodule foreach git pull origin master
-echo "\nDone.\n"
+echo -e "\nDone.\n"
