@@ -68,7 +68,6 @@ endif
 " highlight spaces
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 autocmd BufWinEnter * match ExtraWhitespace /^\t*\zs \+\|[ ]\{1,}$/
-autocmd BufWinLeave * call clearmatches()
 " file specific
 " set markdown fieltype
 autocmd BufWinEnter *.md silent! set ft=markdown
