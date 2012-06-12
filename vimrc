@@ -83,14 +83,32 @@ autocmd Filetype php set formatoptions=croql
 " delete fugitive buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
 " maps
-" paste from OS
-map <F12> "+gP
-" yank to OS
-map <F9> "+y
 " prev buffer
 map <F3> :bp<RETURN>
 " next buffer
 map <F4> :bn<RETURN>
+" c options
+" open error list
+map <F5> :cope <RETURN>
+" close error list
+map <S-F5> :cclose <RETURN>
+" go to next error
+map <F6> :cn <RETURN>
+" go to prev error
+map <S-F6> :cp <RETURN>
+" execute make in current directory
+map <F7> :make<RETURN>
+" compile current file
+map <S-F7> :make %:r <RETURN>
+" switch to buffer, if the target buffer is already displayed in a window or tab, that window will be displayed,
+  " otherwise, the current window will be vsplit
+set switchbuf=usetab
+nnoremap <F8> :sbnext<CR>
+nnoremap <S-F8> :sbprevious<CR>
+" yank to OS
+map <F9> "+y
+" paste from OS
+map <F12> "+gP
 " comment
 map <C-c> <leader>c<space>
 map <C-k> <leader>cm
@@ -102,24 +120,6 @@ nmap <C-h> cit
 nmap <S-T> :NERDTreeToggle<CR>
 " search and replace selected text
 vnoremap <C-h> "hy:%s/<C-r>h//gc<left><left><left>
-" switch to buffer, if the target buffer is already displayed in a window or tab, that window will be displayed,
-  " otherwise, the current window will be vsplit
-set switchbuf=usetab
-nnoremap <F8> :sbnext<CR>
-nnoremap <S-F8> :sbprevious<CR>
-" c options
-" execute make in current directory
-map <F7> :make<RETURN>
-" compile current file
-map <S-F7> :make %:r <RETURN>
-" go to next error
-map <F6> :cn <RETURN>
-" go to prev error
-map <S-F6> :cp <RETURN>
-" open error list
-map <F5> :cope <RETURN>
-" close error list
-map <S-F5> :cclose <RETURN>
 " use grep to find TODO
 nmap \t <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
 \ --exclude-dir=.git "TODO" * <CR> :copen <CR>
