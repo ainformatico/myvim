@@ -116,6 +116,8 @@ map <C-k> <leader>cm
 nmap <C-p> :tabclose<CR>`.
 " edit
 nmap <C-h> cit
+" delete key, useful with <c-h> in insert mode
+imap <C-l> <DEL>
 " NERDTree
 nmap <S-T> :NERDTreeToggle<CR>
 " search and replace selected text
