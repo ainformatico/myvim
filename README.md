@@ -48,7 +48,6 @@ Included plugins
 * vim-pathogen <https://github.com/tpope/vim-pathogen>
 * vim-surround <https://github.com/tpope/vim-surround>
 * snipmate.vim <https://github.com/msanders/snipmate.vim>
-* taglist.vim <https://github.com/vim-scripts/taglist.vim>
 * tabular <https://github.com/godlygeek/tabular>
 * nerdtree <https://github.com/scrooloose/nerdtree>
 * nerdcommenter <https://github.com/scrooloose/nerdcommenter>
