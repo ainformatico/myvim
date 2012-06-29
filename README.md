@@ -28,7 +28,7 @@ Manual Installation
 Update repo and submodules
 --------------------------
 
-`$ sh update.sh`
+`$ ./update.sh`
 
 1. Pull changes from main repo, myvim
 2. Pull changes from each submodule
