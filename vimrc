@@ -123,10 +123,10 @@ nmap <S-T> :NERDTreeToggle<CR>
 " search and replace selected text
 vnoremap <C-h> "hy:%s/<C-r>h//gc<left><left><left>
 " use grep to find TODO
-nmap \t <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
+nmap <LEADER>t <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
 \ --exclude-dir=.git "TODO" * <CR> :copen <CR>
 " use grep to find FIXME
-nmap \f <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
+nmap <LEADER>f <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
 \ --exclude-dir=.git "FIX(ME)?" * <CR> :copen <CR>
 
 " tmux will send xterm-style keys when its xterm-keys option is on
