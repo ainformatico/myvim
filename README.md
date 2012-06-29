@@ -5,8 +5,19 @@ My vim configuration file, snippets and plugins.
 
 Installation script
 --------------------------
+Clone `myvim` to `~/.vim`:
 
-`$ ./install.sh`
+    $ git clone git://github.com/ainformatico/myvim ~/.vim
+
+Then `cd` and execute the installation script:
+
+    $ cd ~/.vim
+
+    $ ./install.sh
+
+*NOTE*: you can easily hack the installation script to install wherever you want.
+
+This script will:
 
 1. Fetch submodules
 2. Backup your old `vimrc` to `/tmp`, if exists
