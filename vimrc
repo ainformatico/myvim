@@ -144,6 +144,17 @@ nnoremap ` '
 " go to last position, column precision
 nnoremap '' `.
 
+" insert the current date as yyyymmdd
+inoremap <M-t> <C-R>=strftime('%Y%m%d')<CR>
+
+function! UpdateModified()
+  exe '%s/@modified\s*\zs\d\{8,\}\ze/' . strftime('%Y%m%d') . '/'
+  :w
+endfunction
+
+" update the @modified from file
+noremap <silent> <M-m> :call UpdateModified()<CR>
+
 " tmux will send xterm-style keys when its xterm-keys option is on
 if &term =~ '^screen'
   execute "set <xUp>=\e[1;*A"
