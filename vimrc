@@ -132,6 +132,10 @@ nmap <LEADER>f <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
 nnoremap <LEADER><LEADER> :nohl<CR>
 " show search matches
 nnoremap <LEADER>/ :set hls<CR>
+" search and replace in selected area
+vnoremap <C-g> :s/\%V//gc<left><left><left><left>
+" search in selected area
+vnoremap // :/\%V
 
 " tmux will send xterm-style keys when its xterm-keys option is on
 if &term =~ '^screen'
