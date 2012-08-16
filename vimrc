@@ -132,6 +132,8 @@ nmap <LEADER>f <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
 nnoremap <LEADER><LEADER> :nohl<CR>
 " show search matches
 nnoremap <LEADER>/ :set hls<CR>
+" set the waiting timeout
+set timeoutlen=500
 " search and replace in selected area
 vnoremap <C-g> :s/\%V//gc<left><left><left><left>
 " search in selected area
