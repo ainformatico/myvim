@@ -136,6 +136,13 @@ nnoremap <LEADER>/ :set hls<CR>
 vnoremap <C-g> :s/\%V//gc<left><left><left><left>
 " search in selected area
 vnoremap // :/\%V
+" for spanish keyboard it's to dificult to press `
+" column precision
+nnoremap ' `
+" line precision
+nnoremap ` '
+" go to last position, column precision
+nnoremap '' `.
 
 " tmux will send xterm-style keys when its xterm-keys option is on
 if &term =~ '^screen'
