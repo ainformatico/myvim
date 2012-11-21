@@ -64,7 +64,7 @@ autocmd BufWinEnter * silent! loadview
 " closetag plugin
 if has('unix')
   autocmd Filetype html,xml,xsl source ~/.vim/bundle/closetag/plugin/closetag.vim
-  set shellcmdflag=-ic "set interactive shell, load bash profile
+  set shellcmdflag=-c "set interactive shell, load bash profile
 endif
 " highlight spaces
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
