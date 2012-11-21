@@ -140,7 +140,7 @@ set timeoutlen=500
 vnoremap <C-g> :s/\%V//gc<left><left><left><left>
 " search in selected area
 vnoremap // :/\%V
-" for spanish keyboard it's to dificult to press `
+" for spanish keyboard it's too dificult to press `
 " column precision
 nnoremap ' `
 " line precision
