@@ -4,6 +4,7 @@ call pathogen#helptags() " the pathogen call search the vim plugins on bundles
 syntax enable " enables syntax highlight
 syntax on " enables syntax highlight
 colorscheme darkblue " colorscheme
+set t_Co=256 " set 256 for terminal colors
 filetype plugin on " enable plugins
 set autochdir  " always switch to the current file directory
 set number " line numbers
