@@ -33,6 +33,7 @@ set softtabstop=2 " tabs
 set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
 set expandtab " don't use real tabs
 set showmatch " show matching elements
+set nrformats= " when using c-a and c-x do not assume 007 as octal
 set foldenable " enable folding
 set mouse=a " enable mouse
 set clipboard=unnamed " advanced clipboard
