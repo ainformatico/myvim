@@ -118,6 +118,8 @@ map <C-k> <leader>cm
 nmap <C-p> :tabclose<CR>`.
 " edit
 nmap <C-h> cit
+" this way we can simulate a real backspace, useful for plugins
+imap <C-h> <BS>
 " delete key, useful with <c-h> in insert mode
 imap <C-l> <DEL>
 " NERDTree
