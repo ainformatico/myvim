@@ -150,11 +150,11 @@ nnoremap ` '
 " go to last position, column precision
 nnoremap '' `.
 " alternative <esc>, using noremap so we don't have to wait
-inoremap <c-k> <esc>
+inoremap <C-k> <ESC>
 " tabularize =, : and =>
-vnoremap t= :Tabularize /=<cr>
-vnoremap t: :Tabularize /:<cr>
-vnoremap t> :Tabularize /=><cr>
+vnoremap t= :Tabularize /=<CR>
+vnoremap t: :Tabularize /:<CR>
+vnoremap t> :Tabularize /=><CR>
 " execute the current script, it must have execution perm
 nnoremap <LEADER>r :!./%<CR>
 
