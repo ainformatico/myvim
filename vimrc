@@ -155,6 +155,8 @@ inoremap <c-k> <esc>
 vnoremap t= :Tabularize /=<cr>
 vnoremap t: :Tabularize /:<cr>
 vnoremap t> :Tabularize /=><cr>
+" execute the current script, it must have execution perm
+nnoremap <LEADER>r :!./%<CR>
 
 " insert the current date as yyyymmdd
 inoremap <M-t> <C-R>=strftime('%Y%m%d')<CR>
