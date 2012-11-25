@@ -149,6 +149,10 @@ nnoremap ' `
 nnoremap ` '
 " go to last position, column precision
 nnoremap '' `.
+" tabularize =, : and =>
+vnoremap t= :Tabularize /=<cr>
+vnoremap t: :Tabularize /:<cr>
+vnoremap t> :Tabularize /=><cr>
 
 " insert the current date as yyyymmdd
 inoremap <M-t> <C-R>=strftime('%Y%m%d')<CR>
