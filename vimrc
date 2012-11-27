@@ -3,7 +3,8 @@ call pathogen#runtime_append_all_bundles() " pathogen start
 call pathogen#helptags() " the pathogen call search the vim plugins on bundles
 syntax enable " enables syntax highlight
 syntax on " enables syntax highlight
-colorscheme darkblue " colorscheme
+colorscheme desert " colorscheme
+set t_Co=256 " set 256 for terminal colors
 filetype plugin on " enable plugins
 set autochdir  " always switch to the current file directory
 set number " line numbers
@@ -33,6 +34,7 @@ set softtabstop=2 " tabs
 set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
 set expandtab " don't use real tabs
 set showmatch " show matching elements
+set nrformats= " when using c-a and c-x do not assume 007 as octal
 set foldenable " enable folding
 set mouse=a " enable mouse
 set clipboard=unnamed " advanced clipboard
@@ -64,7 +66,7 @@ autocmd BufWinEnter * silent! loadview
 " closetag plugin
 if has('unix')
   autocmd Filetype html,xml,xsl source ~/.vim/bundle/closetag/plugin/closetag.vim
-  set shellcmdflag=-ic "set interactive shell, load bash profile
+  set shellcmdflag=-c "set interactive shell, load bash profile
 endif
 " highlight spaces
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
@@ -116,6 +118,8 @@ map <C-k> <leader>cm
 nmap <C-p> :tabclose<CR>`.
 " edit
 nmap <C-h> cit
+" this way we can simulate a real backspace, useful for plugins
+imap <C-h> <BS>
 " delete key, useful with <c-h> in insert mode
 imap <C-l> <DEL>
 " NERDTree
@@ -138,13 +142,21 @@ set timeoutlen=500
 vnoremap <C-g> :s/\%V//gc<left><left><left><left>
 " search in selected area
 vnoremap // :/\%V
-" for spanish keyboard it's to dificult to press `
+" for spanish keyboard it's too dificult to press `
 " column precision
 nnoremap ' `
 " line precision
 nnoremap ` '
 " go to last position, column precision
 nnoremap '' `.
+" alternative <esc>, using noremap so we don't have to wait
+inoremap <C-k> <ESC>
+" tabularize =, : and =>
+vnoremap t= :Tabularize /=<CR>
+vnoremap t: :Tabularize /:<CR>
+vnoremap t> :Tabularize /=><CR>
+" execute the current script, it must have execution perm
+nnoremap <LEADER>r :!./%<CR>
 
 " insert the current date as yyyymmdd
 inoremap <M-t> <C-R>=strftime('%Y%m%d')<CR>
