@@ -70,7 +70,8 @@ if has('unix')
 endif
 " highlight spaces
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-autocmd BufWinEnter * match ExtraWhitespace /^\t*\zs \+\|[ ]\{1,}$/
+autocmd BufWinEnter * match ExtraWhitespace /[ ]\{1,}$/
+autocmd WinEnter * match ExtraWhitespace /[ ]\{1,}$/
 " file specific
 " set markdown fieltype
 autocmd BufWinEnter *.md silent! set ft=markdown
