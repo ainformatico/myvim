@@ -87,6 +87,9 @@ autocmd Filetype php set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
 autocmd Filetype php set formatoptions=croql
 " delete fugitive buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
+" highlight 'NOTE' statement
+autocmd BufWinEnter * silent! syn keyword javaScriptCommentTodo NOTE contained
+autocmd BufWinEnter * silent! syn keyword vimTodo NOTE contained
 " maps
 " prev buffer
 map <F3> :bp<RETURN>
