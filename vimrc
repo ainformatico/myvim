@@ -21,7 +21,7 @@ set showcmd " show mode
 set list " show hidden chars
 " hidden chars representation
 if has('unix')
-  set listchars=tab:^T,eol:¬
+  set listchars=tab:^T,eol:~
 else
   set listchars=tab:^T,eol:$
 endif
@@ -186,3 +186,4 @@ if &term =~ '^screen'
   execute "set <xRight>=\e[1;*C"
   execute "set <xLeft>=\e[1;*D"
 endif
+set shell=/bin/bash
