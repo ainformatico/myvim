@@ -186,3 +186,9 @@ if &term =~ '^screen'
   execute "set <xRight>=\e[1;*C"
   execute "set <xLeft>=\e[1;*D"
 endif
+
+" non-bash shells
+if &shell !~ 'bash'
+  " GitGutter needs /bin/bash so force the shell when it's installed
+  autocmd VimEnter * if exists(":GitGutter") == 2 | set shell=/bin/bash | endif
+endif
