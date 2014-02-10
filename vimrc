@@ -140,6 +140,7 @@ nmap <LEADER>t <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
 " use grep to find FIXME
 nmap <LEADER>f <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
 \ --exclude-dir=.git "FIX(ME)?" * <CR> :copen <CR>
+" Unite, main interface
 nnoremap <LEADER>u :Unite<CR>
 " Unite, buffer and file search
 nnoremap <LEADER>f :Unite -start-insert buffer file_rec/async<CR>
