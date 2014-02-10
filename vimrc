@@ -12,6 +12,7 @@ set number " line numbers
 set hlsearch " highlight search
 set incsearch " show search matches while typing
 set ignorecase " case unsensitive search
+set wrapscan " search loop
 set nocompatible " remove vi backwards compatibility
 set ruler " show line position
 set autoindent " code autoindent
