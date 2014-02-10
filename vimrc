@@ -140,6 +140,31 @@ nmap <LEADER>t <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
 " use grep to find FIXME
 nmap <LEADER>f <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
 \ --exclude-dir=.git "FIX(ME)?" * <CR> :copen <CR>
+nnoremap <LEADER>u :Unite<CR>
+" Unite, buffer and file search
+nnoremap <LEADER>f :Unite -start-insert buffer file_rec/async<CR>
+" Unite, buffer file search
+nnoremap <LEADER>b :Unite -start-insert buffer<CR>
+" Unite, grep in all files
+nnoremap <LEADER>g :Unite grep:.<CR>
+" set the fuzzy engine for searching
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" maximum charachers for fuzzy
+let g:unite_matcher_fuzzy_max_input_length = 70
+" command for file searching, ag is blazing fast
+let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore "tmp" --ignore "log" --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
+" cache the results
+let g:unite_source_rec_max_cache_files=500000
+" custom bindings inside Unite window
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+  imap <SILENT><BUFFER><EXPR> <C-s> unite#do_action('split')
+  imap <SILENT><BUFFER><EXPR> <C-v> unite#do_action('vsplit')
+  imap <SILENT><BUFFER><EXPR> <C-t> unite#do_action('tabopen')
+  nmap <SILENT><BUFFER><EXPR> s unite#do_action('split')
+  nmap <SILENT><BUFFER><EXPR> v unite#do_action('vsplit')
+  nmap <SILENT><BUFFER><EXPR> t unite#do_action('tabopen')
+endfunction
 " hide search matches
 nnoremap <LEADER><LEADER> :nohl<CR>
 " show search matches

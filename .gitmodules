@@ -55,3 +55,6 @@
 [submodule "bundle/vim-rbenv"]
 	path = bundle/vim-rbenv
 	url = git://github.com/tpope/vim-rbenv
+[submodule "bundle/unite.vim"]
+	path = bundle/unite.vim
+	url = git://github.com/Shougo/unite.vim
