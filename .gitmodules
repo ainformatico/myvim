@@ -51,10 +51,10 @@
 	url = git://github.com/kshenoy/vim-signature.git
 [submodule "bundle/vim-coffee-script"]
 	path = bundle/vim-coffee-script
-	url = git://github.com/kchmck/vim-coffee-script
+	url = git://github.com/kchmck/vim-coffee-script.git
 [submodule "bundle/vim-rbenv"]
 	path = bundle/vim-rbenv
-	url = git://github.com/tpope/vim-rbenv
+	url = git://github.com/tpope/vim-rbenv.git
 [submodule "bundle/unite.vim"]
 	path = bundle/unite.vim
-	url = git://github.com/Shougo/unite.vim
+	url = git://github.com/Shougo/unite.vim.git
