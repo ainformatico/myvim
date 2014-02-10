@@ -90,6 +90,7 @@ autocmd Filetype php set formatoptions=croql
 autocmd BufReadPost fugitive://* set bufhidden=delete
 " highlight 'NOTE' statement
 autocmd BufWinEnter * silent! syn keyword javaScriptCommentTodo NOTE contained
+autocmd BufWinEnter * silent! syn keyword coffeeTodo NOTE contained
 autocmd BufWinEnter * silent! syn keyword vimTodo NOTE contained
 " maps
 " prev buffer
