@@ -14,6 +14,10 @@ CUSTOMVIMRCFILE=~/.vim/vimrc
 # init git submodules
 git submodule init
 git submodule update
+# special init for submodules
+cd bundle/vimproc.vim
+make
+cd -
 
 # create symlinks
 if [ -f $LOCALVIMRCFILE ]
