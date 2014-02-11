@@ -159,12 +159,12 @@ let g:unite_source_rec_max_cache_files=500000
 " custom bindings inside Unite window
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
-  imap <SILENT><BUFFER><EXPR> <C-s> unite#do_action('split')
-  imap <SILENT><BUFFER><EXPR> <C-v> unite#do_action('vsplit')
-  imap <SILENT><BUFFER><EXPR> <C-t> unite#do_action('tabopen')
-  nmap <SILENT><BUFFER><EXPR> s unite#do_action('split')
-  nmap <SILENT><BUFFER><EXPR> v unite#do_action('vsplit')
-  nmap <SILENT><BUFFER><EXPR> t unite#do_action('tabopen')
+  imap <silent><buffer><expr> <C-s> unite#do_action('split')
+  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+  imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+  nmap <silent><buffer><expr> s unite#do_action('split')
+  nmap <silent><buffer><expr> v unite#do_action('vsplit')
+  nmap <silent><buffer><expr> t unite#do_action('tabopen')
 endfunction
 " hide search matches
 nnoremap <LEADER><LEADER> :nohl<CR>
