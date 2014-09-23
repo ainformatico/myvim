@@ -223,3 +223,14 @@ if &shell !~ 'bash'
   " GitGutter needs /bin/bash so force the shell when it's installed
   autocmd VimEnter * if exists(":GitGutter") == 2 | set shell=/bin/bash | endif
 endif
+
+"syntastic configuration
+let g:syntastic_auto_jump = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_filetype_map = { 'javascript.doxygen': 'javascript' }
+let g:syntastic_always_populate_loc_list = 1
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
