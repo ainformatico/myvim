@@ -8,6 +8,9 @@ colorscheme desert " colorscheme
 set t_Co=256 " set 256 for terminal colors
 filetype plugin on " enable plugins
 set autochdir  " always switch to the current file directory
+set undodir=/tmp,.
+set undofile
+set undolevels=10000
 set number " line numbers
 set hlsearch " highlight search
 set incsearch " show search matches while typing
