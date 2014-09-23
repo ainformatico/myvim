@@ -241,6 +241,18 @@ if &shell !~ 'bash'
   autocmd VimEnter * if exists(":GitGutter") == 2 | set shell=/bin/bash | endif
 endif
 
+" easy motion
+map ,, <Plug>(easymotion-prefix)
+map  ,,/ <Plug>(easymotion-sn)
+omap ,,/ <Plug>(easymotion-tn)
+map  ,,n <Plug>(easymotion-next)
+map  ,,N <Plug>(easymotion-prev)
+map ,,w <Plug>(easymotion-bd-w)
+map ,,a <Plug>(easymotion-jumptoanywhere)
+map ,,r <Plug>(easymotion-repeat)
+map ,,l <Plug>(easymotion-lineforward)
+map ,,h <Plug>(easymotion-linebackward)
+
 "syntastic configuration
 let g:syntastic_auto_jump = 0
 let g:syntastic_check_on_open = 1
