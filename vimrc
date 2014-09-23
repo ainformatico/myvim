@@ -42,7 +42,12 @@ set showmatch " show matching elements
 set nrformats= " when using c-a and c-x do not assume 007 as octal
 set foldenable " enable folding
 set mouse=a " enable mouse
-set clipboard=unnamed " advanced clipboard
+if has('mac')
+  " fixes issues in MacVim
+  set clipboard=autoselect
+else
+  set clipboard=unnamed " advanced clipboard"
+endif
 set cursorline " highlight current line
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]%{fugitive#statusline()}
 set cursorcolumn " show colum cursor
