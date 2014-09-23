@@ -170,6 +170,12 @@ function! s:unite_my_settings()
   nmap <silent><buffer><expr> t unite#do_action('tabopen')
 endfunction
 
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neocomplcache_enable_at_startup = 1
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate/snippets'"
+
 " Neocomplete
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
