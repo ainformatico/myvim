@@ -261,20 +261,6 @@ endfunction
 " update the @modified from file
 noremap <silent> <M-m> :call UpdateModified()<CR>
 
-" tmux will send xterm-style keys when its xterm-keys option is on
-if &term =~ '^screen'
-  execute "set <xUp>=\e[1;*A"
-  execute "set <xDown>=\e[1;*B"
-  execute "set <xRight>=\e[1;*C"
-  execute "set <xLeft>=\e[1;*D"
-endif
-
-" non-bash shells
-if &shell !~ 'bash'
-  " GitGutter needs /bin/bash so force the shell when it's installed
-  autocmd VimEnter * if exists(":GitGutter") == 2 | set shell=/bin/bash | endif
-endif
-
 " easy motion
 map ,, <Plug>(easymotion-prefix)
 map  ,,/ <Plug>(easymotion-sn)
@@ -297,3 +283,21 @@ let g:syntastic_always_populate_loc_list = 1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+" git gutter
+let g:gitgutter_enabled = 0
+
+" tmux will send xterm-style keys when its xterm-keys option is on
+if &term =~ '^screen'
+  execute "set <xUp>=\e[1;*A"
+  execute "set <xDown>=\e[1;*B"
+  execute "set <xRight>=\e[1;*C"
+  execute "set <xLeft>=\e[1;*D"
+endif
+
+" non-bash shells
+if &shell !~ 'bash'
+  " GitGutter needs /bin/bash so force the shell when it's installed
+  autocmd VimEnter * if exists(":GitGutter") == 2 | set shell=/bin/bash | endif
+  "let g:gitgutter_realtime = 0
+endif
