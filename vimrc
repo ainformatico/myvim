@@ -169,6 +169,17 @@ function! s:unite_my_settings()
   nmap <silent><buffer><expr> v unite#do_action('vsplit')
   nmap <silent><buffer><expr> t unite#do_action('tabopen')
 endfunction
+
+" Neocomplete
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+
 " hide search matches
 nnoremap <LEADER><LEADER> :nohl<CR>
 " show search matches
