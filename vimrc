@@ -146,12 +146,6 @@ nmap <S-T> :NERDTreeToggle<CR>
 nmap <C-t> :NERDTreeFind<CR>
 " search and replace selected text
 vnoremap <C-h> "hy:%s/<C-r>h//gc<left><left><left>
-" use grep to find TODO
-nmap <LEADER>t <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
-\ --exclude-dir=.git "TODO" * <CR> :copen <CR>
-" use grep to find FIXME
-nmap <LEADER>f <Esc>:grep -rIE --exclude=*~ --exclude=*.vim --exclude-dir=tmp
-\ --exclude-dir=.git "FIX(ME)?" * <CR> :copen <CR>
 " Unite, main interface
 nnoremap <LEADER>u :Unite<CR>
 " Unite, buffer and file search
