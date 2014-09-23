@@ -87,6 +87,8 @@ autocmd WinEnter * match ExtraWhitespace /[ ]\{1,}$/
 " file specific
 " set markdown fieltype
 autocmd BufWinEnter *.md silent! set ft=markdown
+autocmd BufWinEnter *.jbuilder silent! set ft=ruby
+autocmd BufWinEnter Berksfile set filetype=ruby
 " advanced strict indent, useful in c files not in sass i.e
 autocmd Filetype c,cpp set cindent
 " set doxygen code document style
