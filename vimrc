@@ -61,11 +61,13 @@ set scrolloff=3 " lines before EOF
 set virtualedit=block " allow virtual editing in Visual block mode
 " gui options
 if has("gui_running")
-  set background=dark
+  set background=light
   colorscheme solarized " colorscheme
   set showtabline=2 " Always show tab line
   "set lines=999 columns=999 " Maximize gvim window.
-  if has('unix')
+  if has('mac')
+    set guifont=Consolas:h12 " gui font
+  elseif has('unix')
     set guifont=Monospace\ 9 " gui font
   endif
   set guioptions=aAeirL " remove unused menus
