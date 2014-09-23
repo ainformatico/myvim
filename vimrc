@@ -156,6 +156,8 @@ nnoremap <LEADER>a :Unite -start-insert buffer file_rec/async<CR>
 nnoremap <LEADER>b :Unite -start-insert buffer<CR>
 " Unite, grep in all files
 nnoremap <LEADER>g :Unite grep:<CR>
+" sort, select lines and sort
+vmap <C-s> :sort<CR>
 " set the fuzzy engine for searching
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#custom#source('file,file/new,buffer,file_rec,file_rec/async', 'matchers', 'matcher_fuzzy')
@@ -215,6 +217,10 @@ endif
 
 " hide search matches
 nnoremap <LEADER><LEADER> :nohl<CR>
+" close the location list
+nnoremap <LEADER><LEADER>c :lclose<CR>
+" Open errors
+nnoremap <LEADER><LEADER>e :Errors<CR>
 " show search matches
 nnoremap <LEADER>/ :set hls<CR>
 " set the waiting timeout
@@ -242,7 +248,8 @@ vnoremap t: :Tabularize /:<CR>
 vnoremap t> :Tabularize /=><CR>
 " execute the current script, it must have execution perm
 nnoremap <LEADER>r :!./%<CR>
-
+" open Gstatus window
+nmap <LEADER>gs :Gstatus<cr>
 " insert the current date as yyyymmdd
 inoremap <M-t> <C-R>=strftime('%Y%m%d')<CR>
 
