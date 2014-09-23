@@ -143,6 +143,7 @@ imap <C-h> <BS>
 imap <C-l> <DEL>
 " NERDTree
 nmap <S-T> :NERDTreeToggle<CR>
+nmap <C-t> :NERDTreeFind<CR>
 " search and replace selected text
 vnoremap <C-h> "hy:%s/<C-r>h//gc<left><left><left>
 " use grep to find TODO
