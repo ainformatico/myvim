@@ -238,10 +238,13 @@ nnoremap ` '
 nnoremap '' `.
 " alternative <esc>, using noremap so we don't have to wait
 inoremap <C-k> <ESC>
-" search forward, aimed for spanish keyboards(inspired by english keyboards)
-nnoremap - /
-" search backwards, aimed for spanish keyboards(inspired by english keyboards)
-nnoremap _ ?
+" this only works if mac is using international english keyboard
+if !has('mac')
+  " search forward, aimed for spanish keyboards(inspired by english keyboards)
+  nnoremap - /
+  " search backwards, aimed for spanish keyboards(inspired by english keyboards)
+  nnoremap _ ?
+endif
 " tabularize =, : and =>
 vnoremap t= :Tabularize /=<CR>
 vnoremap t: :Tabularize /:<CR>
