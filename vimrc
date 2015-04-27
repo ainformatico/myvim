@@ -184,10 +184,8 @@ if executable('ag')
   let g:unite_source_rec_max_cache_files=500000
 endif
 " set sorting
-"call unite#filters#sorter_default#use(['sorter_rank', ''])
-"call unite#custom#source('buffer', 'sorters', 'sorter_rank')
-call unite#custom#source('buffer', 'sorters', 'sorter_ftime, sorter_reverse')
-"call unite#filters#sorter_default#use(['sorter_default'])
+call unite#filters#sorter_default#use(['sorter_rank', ''])
+call unite#custom#source('buffer', 'sorters', 'sorter_ftime,sorter_rank,sorter_reverse')
 " custom bindings inside Unite window
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
