@@ -66,7 +66,7 @@ if has("gui_running")
   set showtabline=2 " Always show tab line
   "set lines=999 columns=999 " Maximize gvim window.
   if has('mac')
-    set guifont=Consolas:h12 " gui font
+    set guifont=Consolas:h13 " gui font
   elseif has('unix')
     set guifont=Monospace\ 9 " gui font
   endif
