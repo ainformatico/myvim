@@ -162,7 +162,7 @@ vmap <C-s> :sort<CR>
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#custom#source('file,file/new,buffer,file_rec,file_rec/async', 'matchers', 'matcher_fuzzy')
 call unite#custom#source('file_rec,file_rec/async', 'matchers', ['converter_relative_word', 'matcher_fuzzy'])
-call unite#custom#source('buffer,file,file_rec,file_rec/async', 'sorters', 'sorter_rank')
+call unite#custom#source('buffer,file,file_rec,file_rec/async', 'sorters', 'sorter_selecta')
 " maximum charachers for fuzzy
 let g:unite_matcher_fuzzy_max_input_length = 50
 
