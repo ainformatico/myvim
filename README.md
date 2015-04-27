@@ -85,3 +85,7 @@ Included plugins
 * gundo <https://github.com/sjl/gundo.vim>
 * vim-haml <https://github.com/tpope/vim-haml>
 * vim-jade <https://github.com/digitaltoad/vim-jade>
+* vim-endwise <https://github.com/tpope/vim-endwise>
+* CamelCaseMotion <https://github.com/bkad/CamelCaseMotion>
+* vim-textobj-user <https://github.com/kana/vim-textobj-user>
+* vim-textobj-rubyblock <https://github.com/nelstrom/vim-textobj-rubyblock>
