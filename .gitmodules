@@ -85,3 +85,6 @@
 [submodule "bundle/vim-jade"]
 	path = bundle/vim-jade
 	url = git://github.com/digitaltoad/vim-jade.git
+[submodule "bundle/CamelCaseMotion"]
+	path = bundle/CamelCaseMotion
+	url = git@github.com:bkad/CamelCaseMotion.git
