@@ -166,6 +166,9 @@ call unite#custom#source('buffer,file,file_rec,file_rec/async', 'sorters', 'sort
 " maximum charachers for fuzzy
 let g:unite_matcher_fuzzy_max_input_length = 50
 
+" add an extra space after comment symbol
+let NERDSpaceDelims=1
+
 " command for file searching, ag is blazing fast
 if executable('ag')
   " Use ag in unite grep source.
