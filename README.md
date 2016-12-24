@@ -49,7 +49,9 @@ How To install new bundles (vim plugins)
 
 1. `$ cd ~/.vim`
 2. `$ mkdir ~/.vim/bundle`
+2. `$ cd ~/.vim/bundle`
 3. `$ git submodule add {plugin_uri}`
+2. `$ cd ~/.vim`
 4. `$ git add .`
 5. `$ git commit -m "ADD {plugin_name}"`
 
