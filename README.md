@@ -92,3 +92,4 @@ Included plugins
 * vim-textobj-user <https://github.com/kana/vim-textobj-user>
 * vim-textobj-rubyblock <https://github.com/nelstrom/vim-textobj-rubyblock>
 * vim-multiple-cursors <https://github.com/terryma/vim-multiple-cursors>
+* vim-notes <https://github.com/xolox/vim-notes>
