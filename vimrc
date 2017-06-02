@@ -290,16 +290,18 @@ map ,,r <Plug>(easymotion-repeat)
 map ,,l <Plug>(easymotion-lineforward)
 map ,,h <Plug>(easymotion-linebackward)
 
-let g:syntastic_auto_jump = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_filetype_map = { 'javascript.doxygen': 'javascript' }
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_always_populate_loc_list = 1
+let g:ale_statusline_format = ['✗ %d ', '!%d ', '✓ ']
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_delay = 1
+let g:ale_lint_on_insert_leave = 1
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=\ %{ALEGetStatusLine()}
 set statusline+=%*
 
 " git gutter

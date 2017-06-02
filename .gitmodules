@@ -64,9 +64,6 @@
 [submodule "bundle/gitv"]
 	path = bundle/gitv
 	url = git://github.com/gregsexton/gitv.git
-[submodule "bundle/syntastic"]
-	path = bundle/syntastic
-	url = git://github.com/scrooloose/syntastic.git
 [submodule "bundle/neocomplete"]
 	path = bundle/neocomplete
 	url = git://github.com/Shougo/neocomplete.vim.git
@@ -109,3 +106,6 @@
 [submodule "bundle/vim-dispatch"]
 	path = bundle/vim-dispatch
 	url = git@github.com:tpope/vim-dispatch.git
+[submodule "bundle/ale"]
+	path = bundle/ale
+	url = git@github.com:w0rp/ale.git
