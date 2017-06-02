@@ -146,59 +146,92 @@ nmap <S-T> :NERDTreeToggle<CR>
 nmap <C-t> :NERDTreeFind<CR>
 " search and replace selected text
 vnoremap <C-h> "hy:%s/<C-r>h//gc<left><left><left>
-" Unite, main interface
-nnoremap <LEADER>u :Unite -start-insert<CR>
-" Unite, file search
-nnoremap <LEADER>f :Unite -start-insert file_rec/async<CR>
-" Unite, buffer and file search
-nnoremap <LEADER>a :Unite -start-insert buffer file_rec/async<CR>
-" Unite, buffer file search
-nnoremap <LEADER>b :Unite -start-insert buffer<CR>
-" Unite, grep in all files
-nnoremap <LEADER>g :Unite grep:<CR>
+nnoremap <LEADER>f :Denite file_rec<CR>
+
+call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+call denite#custom#source('file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
+call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
+call denite#custom#source('file_rec', 'sorters', ['sorter_rank'])
+" Change default prompt
+call denite#custom#option('default', 'prompt', '>')
+
+" Change ignore_globs
+call denite#custom#filter('matcher_ignore_globs', 'ignore_globs', [ '.git/',
+      \'.ropeproject/', '__pycache__/', 'venv/', 'images/', '*.min.*',
+      \'img/', 'fonts/', 'node_modules', '*bundle-*'])
+
+" Ag command on grep source
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
+call denite#custom#option('default', 'updatetime', 1)
+call denite#custom#option('default', 'max_candidate_width', 100)
+call denite#custom#option('default', 'highlight_matched_char', 'NonText')
+call denite#custom#option('default', 'highlight_matched', 'WarningMsg')
+call denite#custom#option('default', 'highlight_mode_insert', 'PMenu')
+
+" Use mapping action directly
+call denite#custom#map(
+      \ 'normal',
+      \ '<C-s>',
+      \ '<denite:do_action:split>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'normal',
+      \ '<C-v>',
+      \ '<denite:do_action:vsplit>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'normal',
+      \ '<C-t>',
+      \ '<denite:do_action:tabopen>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-s>',
+      \ '<denite:do_action:split>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-v>',
+      \ '<denite:do_action:vsplit>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-t>',
+      \ '<denite:do_action:tabopen>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<ESC>',
+      \ '<denite:enter_mode:normal>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'normal',
+      \ '<ESC>',
+      \ '<denite:quit>',
+      \ 'noremap'
+      \)
+
+nnoremap <LEADER>b :Denite buffer<CR>
+nnoremap <LEADER>g :Denite grep<CR>
+
 " sort, select lines and sort
 vmap <C-s> :sort<CR>
-" set the fuzzy engine for searching
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#custom#source('file,file/new,buffer,file_rec,file_rec/async', 'matchers', 'matcher_fuzzy')
-call unite#custom#source('file_rec,file_rec/async', 'matchers', ['converter_relative_word', 'matcher_fuzzy'])
-call unite#custom#source('buffer,file,file_rec,file_rec/async', 'sorters', 'sorter_selecta')
-" maximum charachers for fuzzy
-let g:unite_matcher_fuzzy_max_input_length = 50
 
 " add an extra space after comment symbol
 let NERDSpaceDelims=1
-
-" command for file searching, ag is blazing fast
-if executable('ag')
-  " Use ag in unite grep source.
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts =
-  \ '-i --line-numbers --nocolor --nogroup --hidden --ignore ' .
-  \  '''.hg'' --ignore ''.svn'' --ignore ''*.sock'' --ignore ''tmp'' --ignore ''log'' --ignore ''.git'' --ignore ''.bzr'''
-  let g:unite_source_grep_recursive_opt = ''
-  " use ag for file searching
-  let g:unite_source_rec_async_command='ag -i --nocolor --nogroup --ignore "tmp" --ignore "log" --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
-  let g:unite_source_history_yank_enable=1
-  " cache the results
-  let g:unite_source_rec_max_cache_files=500000
-endif
-" set sorting
-call unite#filters#sorter_default#use(['sorter_rank', ''])
-call unite#custom#source('buffer', 'sorters', 'sorter_ftime,sorter_rank,sorter_reverse')
-" custom bindings inside Unite window
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()
-  nmap <buffer> <C-k>     <Plug>(unite_toggle_auto_preview)
-  nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-  imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-  imap <silent><buffer><expr> <C-s> unite#do_action('split')
-  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-  imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-  nmap <silent><buffer><expr> s unite#do_action('split')
-  nmap <silent><buffer><expr> v unite#do_action('vsplit')
-  nmap <silent><buffer><expr> t unite#do_action('tabopen')
-endfunction
 
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1

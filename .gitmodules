@@ -55,9 +55,6 @@
 [submodule "bundle/vim-rbenv"]
 	path = bundle/vim-rbenv
 	url = git://github.com/tpope/vim-rbenv.git
-[submodule "bundle/unite.vim"]
-	path = bundle/unite.vim
-	url = git://github.com/Shougo/unite.vim.git
 [submodule "bundle/vimproc.vim"]
 	path = bundle/vimproc.vim
 	url = git://github.com/Shougo/vimproc.vim.git
@@ -109,3 +106,6 @@
 [submodule "bundle/ale"]
 	path = bundle/ale
 	url = git@github.com:w0rp/ale.git
+[submodule "bundle/denite.nvim"]
+	path = bundle/denite.nvim
+	url = git@github.com:Shougo/denite.nvim.git
