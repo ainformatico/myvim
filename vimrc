@@ -4,8 +4,8 @@ call pathogen#helptags() " the pathogen call search the vim plugins on bundles
 filetype plugin indent on
 syntax enable " enables syntax highlight
 syntax on " enables syntax highlight
-colorscheme desert " colorscheme
-set t_Co=256 " set 256 for terminal colors
+colorscheme solarized
+set background=light
 filetype plugin on " enable plugins
 set undodir=/tmp,.
 set undofile
@@ -51,7 +51,7 @@ set cursorline " highlight current line
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]%{fugitive#statusline()}
 set cursorcolumn " show colum cursor
 " terminal color for column cursor
-hi CursorColumn ctermbg=4
+hi CursorColumn ctermbg=7
 set laststatus=2 " always show status line
 set smartcase " if there are caps, go case-sensitive
 set omnifunc=on " autocomplete function
