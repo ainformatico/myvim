@@ -238,6 +238,7 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neocomplcache_enable_at_startup = 1
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate/snippets'"
+let g:neosnippet#disable_runtime_snippets = { "_": 1, }
 
 " Neocomplete
 let g:neocomplete#enable_at_startup = 1
