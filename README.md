@@ -3,6 +3,10 @@ Myvim
 
 My vim configuration file, snippets and plugins.
 
+Important
+-----------
+I'm using Vim 8+ so expect my configuration to *not* work on older versions of Vim.
+
 Installation script
 --------------------------
 Clone `myvim` to `~/.vim`:
@@ -77,14 +81,13 @@ Included plugins
 * vim-signature <https://github.com/kshenoy/vim-signature>
 * vim-coffee-script <https://github.com/kchmck/vim-coffee-script>
 * vim-rbenv <https://github.com/tpope/vim-rbenv>
-* unite.vim <https://github.com/Shougo/unite.vim>
+* denite.nvim <https://github.com/Shougo/denite.nvim>
 * vimproc.vim <https://github.com/Shougo/vimproc.vim>
 * gitv <https://github.com/gregsexton/gitv>
-* syntastic <https://github.com/scrooloose/syntastic>
+* ale <https://github.com/w0rp/ale>
 * neocomplete <https://github.com/Shougo/neocomplete.vim>
 * neosnippet <https://github.com/Shougo/neosnippet.vim>
 * vim-easymotion <https://github.com/Lokaltog/vim-easymotion>
-* gundo <https://github.com/sjl/gundo.vim>
 * vim-haml <https://github.com/tpope/vim-haml>
 * vim-jade <https://github.com/digitaltoad/vim-jade>
 * vim-endwise <https://github.com/tpope/vim-endwise>
@@ -94,3 +97,4 @@ Included plugins
 * vim-multiple-cursors <https://github.com/terryma/vim-multiple-cursors>
 * vim-notes <https://github.com/xolox/vim-notes>
 * vim-dispatch <https://github.com/tpope/vim-dispatch>
+* vim-jsx <https://github.com/mxw/vim-jsx>
