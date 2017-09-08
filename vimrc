@@ -5,6 +5,7 @@ filetype plugin indent on
 syntax enable " enables syntax highlight
 syntax on " enables syntax highlight
 colorscheme solarized
+set t_Co=256
 set background=light
 filetype plugin on " enable plugins
 set undodir=/tmp,.
@@ -47,11 +48,11 @@ if has('mac')
 else
   set clipboard=unnamed " advanced clipboard"
 endif
-set cursorline " highlight current line
+set nocursorline " highlight current line
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]%{fugitive#statusline()}
-set cursorcolumn " show colum cursor
+set nocursorcolumn " show colum cursor
 " terminal color for column cursor
-hi CursorColumn ctermbg=7
+" hi CursorColumn ctermbg=7
 set laststatus=2 " always show status line
 set smartcase " if there are caps, go case-sensitive
 set omnifunc=on " autocomplete function
@@ -66,7 +67,7 @@ if has("gui_running")
   set showtabline=2 " Always show tab line
   "set lines=999 columns=999 " Maximize gvim window.
   if has('mac')
-    set guifont=Consolas:h13 " gui font
+    set guifont=Monaco:h17 " gui font
   elseif has('unix')
     set guifont=Monospace\ 9 " gui font
   endif
@@ -148,6 +149,8 @@ nmap <C-t> :NERDTreeFind<CR>
 vnoremap <C-h> "hy:%s/<C-r>h//gc<left><left><left>
 nnoremap <LEADER>f :Denite file_rec<CR>
 
+vnoremap <C-f> :fold<CR>
+
 call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 call denite#custom#source('file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
 call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
@@ -226,6 +229,7 @@ call denite#custom#map(
 
 nnoremap <LEADER>b :Denite buffer<CR>
 nnoremap <LEADER>g :Denite grep<CR>
+nnoremap <LEADER>d :Denite grep -path=
 
 " sort, select lines and sort
 vmap <C-s> :sort<CR>
@@ -250,19 +254,6 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
 
-"map <silent> w <Plug>CamelCaseMotion_w
-"map <silent> b <Plug>CamelCaseMotion_b
-"map <silent> e <Plug>CamelCaseMotion_e
-"sunmap w
-"sunmap b
-"sunmap e
-"omap <silent> iw <Plug>CamelCaseMotion_iw
-"xmap <silent> iw <Plug>CamelCaseMotion_iw
-"omap <silent> ib <Plug>CamelCaseMotion_ib
-"xmap <silent> ib <Plug>CamelCaseMotion_ib
-"omap <silent> ie <Plug>CamelCaseMotion_ie
-"xmap <silent> ie <Plug>CamelCaseMotion_ie
-
 " hide search matches
 nnoremap <LEADER><LEADER> :nohl<CR>
 " close the location list
@@ -286,31 +277,9 @@ nnoremap ` '
 nnoremap '' `.
 " alternative <esc>, using noremap so we don't have to wait
 inoremap <C-k> <ESC>
-" this only works if mac is using international english keyboard
-if !has('mac')
-  " search forward, aimed for spanish keyboards(inspired by english keyboards)
-  nnoremap - /
-  " search backwards, aimed for spanish keyboards(inspired by english keyboards)
-  nnoremap _ ?
-endif
-" tabularize =, : and =>
-vnoremap t= :Tabularize /=<CR>
-vnoremap t: :Tabularize /:<CR>
-vnoremap t> :Tabularize /=><CR>
-" execute the current script, it must have execution perm
-nnoremap <LEADER>r :!./%<CR>
+
 " open Gstatus window
 nmap <LEADER>gs :Gstatus<cr>
-" insert the current date as yyyymmdd
-inoremap <M-t> <C-R>=strftime('%Y%m%d')<CR>
-
-function! UpdateModified()
-  exe '%s/@modified\s*\zs\d\{8,\}\ze/' . strftime('%Y%m%d') . '/'
-  :w
-endfunction
-
-" update the @modified from file
-noremap <silent> <M-m> :call UpdateModified()<CR>
 
 " easy motion
 map ,, <Plug>(easymotion-prefix)
@@ -324,12 +293,14 @@ map ,,r <Plug>(easymotion-repeat)
 map ,,l <Plug>(easymotion-lineforward)
 map ,,h <Plug>(easymotion-linebackward)
 
-let g:ale_statusline_format = ['✗ %d ', '!%d ', '✓ ']
 let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_echo_msg_warning_str = 'W'
 let g:ale_lint_delay = 1
 let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_text_changed = "normal"
+let g:ale_sign_column_always = 1
+let g:ale_statusline_format = ['✗ %d ', '!%d ', '✓ ']
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -338,22 +309,12 @@ set statusline+=%#warningmsg#
 set statusline+=\ %{ALEGetStatusLine()}
 set statusline+=%*
 
-" git gutter
-let g:gitgutter_enabled = 0
-
 " tmux will send xterm-style keys when its xterm-keys option is on
 if &term =~ '^screen'
   execute "set <xUp>=\e[1;*A"
   execute "set <xDown>=\e[1;*B"
   execute "set <xRight>=\e[1;*C"
   execute "set <xLeft>=\e[1;*D"
-endif
-
-" non-bash shells
-if &shell !~ 'bash'
-  " GitGutter needs /bin/bash so force the shell when it's installed
-  autocmd VimEnter * if exists(":GitGutter") == 2 | set shell=/bin/bash | endif
-  "let g:gitgutter_realtime = 0
 endif
 
 " using this fork, https://github.com/kris89/vim-multiple-cursors
