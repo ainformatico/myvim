@@ -1,10 +1,42 @@
-runtime bundle/vim-pathogen/autoload/pathogen.vim " load pathogen from custom location(submodule)
-call pathogen#infect()
-call pathogen#helptags() " the pathogen call search the vim plugins on bundles
+call plug#begin('~/.vim/plugged')
+Plug 'Lokaltog/vim-easymotion'
+Plug 'Raimondi/delimitMate'
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neco-syntax'
+Plug 'airblade/vim-gitgutter'
+Plug 'gregsexton/gitv', { 'on': ['Gitv!', 'Gitv'] }
+Plug 'iCyMind/NeoSolarized'
+Plug 'kana/vim-textobj-user'
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+Plug 'kshenoy/vim-signature'
+Plug 'msanders/snipmate.vim'
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive', { 'on': ['Gstatus'] }
+Plug 'tpope/vim-haml', { 'for': 'haml' }
+Plug 'tpope/vim-rails' ", { 'for': 'ruby' }
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/matchit.zip'
+Plug 'w0rp/ale'
+call plug#end()
+
+let g:deoplete#enable_at_startup = 0
+
 filetype plugin indent on
 syntax enable " enables syntax highlight
 syntax on " enables syntax highlight
-colorscheme solarized
+set termguicolors
+let g:gitgutter_override_sign_column_highlight = 0
+let g:neosolarized_bold = 1
+let g:neosolarized_underline = 1
+let g:neosolarized_italic = 1
+colorscheme NeoSolarized
 set t_Co=256
 set background=light
 filetype plugin on " enable plugins
@@ -42,14 +74,16 @@ set showmatch " show matching elements
 set nrformats= " when using c-a and c-x do not assume 007 as octal
 set foldenable " enable folding
 set mouse=a " enable mouse
-if has('mac')
+" if has('mac')
   " fixes issues in MacVim
-  set clipboard=autoselect
-else
-  set clipboard=unnamed " advanced clipboard"
-endif
+  " set clipboard=autoselect
+" else
+  " set clipboard=unnamed " advanced clipboard"
+" endif
+set clipboard=unnamedplus " advanced clipboard"
 set nocursorline " highlight current line
-set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]%{fugitive#statusline()}
+" set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]%{fugitive#statusline()}
+set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 set nocursorcolumn " show colum cursor
 " terminal color for column cursor
 " hi CursorColumn ctermbg=7
@@ -299,7 +333,7 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_lint_delay = 1
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = "normal"
-let g:ale_sign_column_always = 1
+let g:ale_sign_column_always = 0
 let g:ale_statusline_format = ['✗ %d ', '!%d ', '✓ ']
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -319,12 +353,12 @@ endif
 
 " using this fork, https://github.com/kris89/vim-multiple-cursors
 " we need to hackit in order to disable neocomplete when using mutiple cursors
-function! Multiple_cursors_before()
-    exe 'NeoCompleteLock'
-    echo 'Disabled autocomplete'
-endfunction
-
-function! Multiple_cursors_after()
-    exe 'NeoCompleteUnlock'
-    echo 'Enabled autocomplete'
-endfunction
+"function! Multiple_cursors_before()
+"    exe 'NeoCompleteLock'
+"    echo 'Disabled autocomplete'
+"endfunction
+"
+"function! Multiple_cursors_after()
+"    exe 'NeoCompleteUnlock'
+"    echo 'Enabled autocomplete'
+"endfunction
