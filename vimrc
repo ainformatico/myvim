@@ -112,6 +112,9 @@ else
 endif
 set nocursorline " highlight current line
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]%{fugitive#statusline()}
+set statusline+=%#warningmsg#
+set statusline+=\ %{ALEGetStatusLine()}
+set statusline+=%*
 set nocursorcolumn " show colum cursor
 set laststatus=2 " always show status line
 set smartcase " if there are caps, go case-sensitive
@@ -323,10 +326,6 @@ let g:ale_statusline_format = ['✗ %d ', '!%d ', '✓ ']
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-set statusline+=%#warningmsg#
-set statusline+=\ %{ALEGetStatusLine()}
-set statusline+=%*
 
 " using this fork, https://github.com/kris89/vim-multiple-cursors
 " we need to hackit in order to disable neocomplete when using mutiple cursors
