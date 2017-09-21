@@ -32,7 +32,10 @@ if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'Shougo/neco-syntax'
   Plug 'cyansprite/Extract'
+else
+  Plug 'Shougo/neocomplete.vim'
 endif
+
 call plug#end()
 
 nnoremap p p=`]
@@ -46,6 +49,7 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 
 if has('nvim')
   let g:deoplete#enable_at_startup = 1
+  let g:extract_maxCount = 10
 endif
 
 let g:neocomplete#enable_at_startup = 1
@@ -326,3 +330,37 @@ let g:ale_statusline_format = ['✗ %d ', '!%d ', '✓ ']
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
+omap <silent> iw <Plug>CamelCaseMotion_ib
+xmap <silent> iw <Plug>CamelCaseMotion_ib
+omap <silent> ib <Plug>CamelCaseMotion_iw
+xmap <silent> ib <Plug>CamelCaseMotion_iw
+omap <silent> ie <Plug>CamelCaseMotion_ie
+xmap <silent> ie <Plug>CamelCaseMotion_ie
+
+
+" Disable plugins when using mutiple cursors
+function! Multiple_cursors_before()
+  if !has('nvim')
+    exe 'NeoCompleteLock'
+  endif
+
+  exe 'ALEDisable'
+endfunction
+
+function! Multiple_cursors_after()
+  if !has('nvim')
+    exe 'NeoCompleteUnlock'
+  endif
+
+  exe 'ALEEnable'
+endfunction
