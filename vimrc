@@ -35,6 +35,8 @@ if has('nvim')
 endif
 call plug#end()
 
+nnoremap p p=`]
+nnoremap P P=`]
 nnoremap <LEADER>tv :AV<CR>
 nnoremap <LEADER>ts :AS<CR>
 nnoremap <LEADER>ta :A<CR>
