@@ -31,6 +31,7 @@ Plug 'majutsushi/tagbar'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'Shougo/neco-syntax'
+  Plug 'cyansprite/Extract'
 endif
 call plug#end()
 
