@@ -1,63 +1,15 @@
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = git://github.com/msanders/snipmate.vim.git
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = git://github.com/tpope/vim-surround.git
-[submodule "bundle/delimitmate"]
-	path = bundle/delimitmate
-	url = git://github.com/Raimondi/delimitMate.git
-[submodule "bundle/nerdcommenter"]
-	path = bundle/nerdcommenter
-	url = git://github.com/scrooloose/nerdcommenter.git
 [submodule "bundle/matchit"]
 	path = bundle/matchit
 	url = git://github.com/vim-scripts/matchit.zip.git
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
-[submodule "bundle/vim-repeat"]
-	path = bundle/vim-repeat
-	url = git://github.com/tpope/vim-repeat.git
 [submodule "bundle/vim-colors-solarized"]
 	path = bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized
-[submodule "bundle/vim-rails"]
-	path = bundle/vim-rails
-	url = git://github.com/tpope/vim-rails.git
-[submodule "bundle/vim-coffee-script"]
-	path = bundle/vim-coffee-script
-	url = git://github.com/kchmck/vim-coffee-script.git
-[submodule "bundle/gitv"]
-	path = bundle/gitv
-	url = git://github.com/gregsexton/gitv.git
-[submodule "bundle/vim-easymotion"]
-	path = bundle/vim-easymotion
-	url = git://github.com/Lokaltog/vim-easymotion.git
-[submodule "bundle/vim-haml"]
-	path = bundle/vim-haml
-	url = git://github.com/tpope/vim-haml.git
-[submodule "bundle/vim-textobj-user"]
-	path = bundle/vim-textobj-user
-	url = git@github.com:kana/vim-textobj-user.git
-[submodule "bundle/vim-textobj-rubyblock"]
-	path = bundle/vim-textobj-rubyblock
-	url = git@github.com:nelstrom/vim-textobj-rubyblock.git
-[submodule "bundle/vim-endwise"]
-	path = bundle/vim-endwise
-	url = git@github.com:tpope/vim-endwise.git
-[submodule "bundle/vim-multiple-cursors"]
-	path = bundle/vim-multiple-cursors
-	url = git@github.com:terryma/vim-multiple-cursors.git
-[submodule "bundle/ale"]
-	path = bundle/ale
-	url = git@github.com:w0rp/ale.git
-[submodule "bundle/denite.nvim"]
-	path = bundle/denite.nvim
-	url = git@github.com:Shougo/denite.nvim.git
-[submodule "bundle/vim-jsx"]
-	path = bundle/vim-jsx
-	url = git@github.com:mxw/vim-jsx.git
