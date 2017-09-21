@@ -1,11 +1,19 @@
 call plug#begin('~/.vim/bundle')
 Plug 'Lokaltog/vim-easymotion'
 Plug 'Raimondi/delimitMate'
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'bkad/CamelCaseMotion'
+Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'gregsexton/gitv', { 'on': ['Gitv!', 'Gitv'] }
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'kshenoy/vim-signature'
+Plug 'majutsushi/tagbar'
 Plug 'msanders/snipmate.vim'
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
@@ -20,14 +28,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/matchit.zip'
 Plug 'w0rp/ale'
-Plug 'altercation/vim-colors-solarized'
-Plug 'Shougo/denite.nvim'
-Plug 'Shougo/neomru.vim'
-Plug 'Shougo/neocomplete.vim'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
-Plug 'majutsushi/tagbar'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'Shougo/neco-syntax'
