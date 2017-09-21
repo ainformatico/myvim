@@ -326,15 +326,3 @@ let g:ale_statusline_format = ['✗ %d ', '!%d ', '✓ ']
 
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-" using this fork, https://github.com/kris89/vim-multiple-cursors
-" we need to hackit in order to disable neocomplete when using mutiple cursors
-"" function! Multiple_cursors_before()
-""    exe 'NeoCompleteLock'
-""    echo 'Disabled autocomplete'
-"" endfunction
-"" 
-"" function! Multiple_cursors_after()
-""    exe 'NeoCompleteUnlock'
-""    echo 'Enabled autocomplete'
-"" endfunction
