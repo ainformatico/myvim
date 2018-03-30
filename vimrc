@@ -34,7 +34,6 @@ Plug 'vim-scripts/closetag.vim'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'Shougo/neco-syntax'
-  Plug 'cyansprite/Extract'
 else
   Plug 'Shougo/neocomplete.vim'
 endif
