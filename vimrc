@@ -41,8 +41,8 @@ endif
 
 call plug#end()
 
-nnoremap p p=`]
-nnoremap P P=`]
+nnoremap ]p p=`]
+nnoremap ]P P=`]
 
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 0
