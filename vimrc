@@ -30,6 +30,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/matchit.zip'
 Plug 'w0rp/ale'
+Plug 'vim-scripts/closetag.vim'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'Shougo/neco-syntax'
@@ -144,7 +145,7 @@ autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
 " closetag plugin
 if has('unix')
-  autocmd Filetype html,xml,xsl source ~/.vim/bundle/closetag/plugin/closetag.vim
+  autocmd Filetype html,xml,xsl source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
   set shellcmdflag=-c "set interactive shell, load bash profile
 endif
 " highlight spaces
