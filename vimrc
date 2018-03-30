@@ -177,7 +177,7 @@ set switchbuf=usetab
 " yank to OS
 map <F9> "+y
 " paste from OS
-map <F12> "+gP
+map <F10> "+gP
 " comment
 map <C-c> <leader>c<space>
 " close current tab
