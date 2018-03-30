@@ -75,13 +75,7 @@ endif
 set background=light
 
 " filetype plugin indent on
-syntax enable " enables syntax highlight
-"syntax on " enables syntax highlight
-"set termguicolors
-" let g:gitgutter_override_sign_column_highlight = 0
-"set t_Co=256
-"let g:solarized_termcolors=256
-" filetype plugin on " enable plugins
+syntax on " enables syntax highlight
 call togglebg#map("<F5>")
 set undodir=/tmp,.
 set undofile
