@@ -1,4 +1,6 @@
 call plug#begin('~/.vim/bundle')
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/denite.nvim'
@@ -40,6 +42,10 @@ call plug#end()
 
 nnoremap p p=`]
 nnoremap P P=`]
+
+let g:airline_theme='solarized'
+let g:airline#extensions#tabline#enabled = 0
+
 nnoremap <LEADER>tv :AV<CR>
 nnoremap <LEADER>ts :AS<CR>
 nnoremap <LEADER>ta :A<CR>
@@ -115,12 +121,7 @@ else
   set clipboard=unnamed " advanced clipboard"
 endif
 set nocursorline " highlight current line
-set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]%{fugitive#statusline()}
-set statusline+=%#warningmsg#
-set statusline+=\ %{ALEGetStatusLine()}
-set statusline+=%*
 set nocursorcolumn " show colum cursor
-set laststatus=2 " always show status line
 set smartcase " if there are caps, go case-sensitive
 set omnifunc=on " autocomplete function
 set completeopt=menu,preview " autocomplete function

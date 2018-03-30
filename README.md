@@ -98,3 +98,4 @@ Included plugins
 * vim-notes <https://github.com/xolox/vim-notes>
 * vim-dispatch <https://github.com/tpope/vim-dispatch>
 * vim-jsx <https://github.com/mxw/vim-jsx>
+* vim-airline <https://github.com/vim-airline/vim-airline>
