@@ -1,16 +1,14 @@
 call plug#begin('~/.vim/bundle')
+Plug 'slashmili/alchemist.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/neomru.vim'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bkad/CamelCaseMotion'
-Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'gregsexton/gitv', { 'on': ['Gitv!', 'Gitv'] }
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
@@ -28,16 +26,25 @@ Plug 'tpope/vim-haml', { 'for': 'haml' }
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/matchit.zip'
-Plug 'w0rp/ale'
 Plug 'vim-scripts/closetag.vim'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'w0rp/ale'
+Plug 'elixir-editors/vim-elixir'
+Plug 'c-brenn/phoenix.vim'
+Plug 'tpope/vim-projectionist'
+Plug 'carmonw/elm-vim'
+Plug 'pbogut/deoplete-elm'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'Shougo/neco-syntax'
 else
   Plug 'Shougo/neocomplete.vim'
 endif
-
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'jparise/vim-graphql'
 call plug#end()
 
 nnoremap ]p p=`]
@@ -51,6 +58,8 @@ nnoremap <LEADER>ts :AS<CR>
 nnoremap <LEADER>ta :A<CR>
 nnoremap <LEADER>tt :TagbarToggle<CR>
 
+set nopaste
+
 let g:neosnippet#enable_snipmate_compatibility = 1
 
 if has('nvim')
@@ -62,21 +71,25 @@ let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#sources#syntax#min_keyword_length = 2
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
 
-"set synmaxcol=150
+set synmaxcol=150
 "syntax sync minlines=256
-"set lazyredraw
+set lazyredraw
+set ttyfast
 set background=light
+set regexpengine=1
+let g:ruby_path = system('echo $HOME/.rbenv/shims')
+
+set title
 
 " filetype plugin indent on
 syntax on " enables syntax highlight
-call togglebg#map("<F5>")
 set undodir=/tmp,.
 set undofile
 set undolevels=10000
@@ -138,7 +151,7 @@ autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
 " closetag plugin
 if has('unix')
-  autocmd Filetype html,xml,xsl source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
+  autocmd Filetype html,xml,xsl,javascript.jsx,eelixir source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
   set shellcmdflag=-c "set interactive shell, load bash profile
 endif
 " highlight spaces
@@ -149,6 +162,7 @@ autocmd WinEnter * match ExtraWhitespace /[ ]\{1,}$/
 " set markdown fieltype
 autocmd BufWinEnter *.md silent! set ft=markdown
 autocmd BufWinEnter *.jbuilder,Berksfile,Guardfile,Bowerfile silent! set ft=ruby
+autocmd BufWinEnter Jenkinsfile silent! set ft=groovy
 autocmd BufWinEnter COMMIT_EDITMSG setl spell
 " advanced strict indent, useful in c files not in sass i.e
 autocmd Filetype c,cpp set cindent
@@ -182,26 +196,30 @@ nmap <C-h> cit
 imap <C-h> <BS>
 " delete key, useful with <c-h> in insert mode
 imap <C-l> <DEL>
+imap <C-s> <ESC>:w<CR>
+nmap <C-s> :w<CR>
 " NERDTree
 nmap <S-T> :NERDTreeToggle<CR>
 nmap <C-t> :NERDTreeFind<CR>
 " search and replace selected text
 vnoremap <C-h> "hy:%s/<C-r>h//gc<left><left><left>
-nnoremap <LEADER>f :Denite file_rec<CR>
+nnoremap <LEADER>f :Denite file/rec<CR>
 
 vnoremap <C-f> :fold<CR>
 
-call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-call denite#custom#source('file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
-call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
-call denite#custom#source('file_rec', 'sorters', ['sorter_rank'])
+vnoremap <C-b> :Gblame<CR>
+
+call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+call denite#custom#source('file/mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
+call denite#custom#source('file/rec', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
+call denite#custom#source('file/rec', 'sorters', ['sorter_rank'])
 " Change default prompt
 call denite#custom#option('default', 'prompt', '>')
 
 " Change ignore_globs
-call denite#custom#filter('matcher_ignore_globs', 'ignore_globs', [ '.git/',
+call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/',
       \'.ropeproject/', '__pycache__/', 'venv/', 'images/', '*.min.*',
-      \'img/', 'fonts/', 'node_modules'])
+      \'img/', 'fonts/', 'node_modules', 'public/assets/**/bundle/*.js', 'public/assets/**/bundle/*.map'])
 
 " Ag command on grep source
 call denite#custom#var('grep', 'command', ['ag'])
@@ -210,6 +228,7 @@ call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'pattern_opt', [])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#source('grep', 'args', ['', '', ''])
 
 call denite#custom#option('default', 'updatetime', 1)
 call denite#custom#option('default', 'max_candidate_width', 100)
@@ -282,6 +301,9 @@ call denite#custom#map(
 nnoremap <LEADER>b :Denite buffer<CR>
 nnoremap <LEADER>g :Denite grep<CR>
 nnoremap <LEADER>d :Denite grep -path=
+nnoremap <LEADER>r :Denite grep:::!<CR>
+nnoremap <LEADER>r :Denite grep:::!<CR>
+nnoremap <LEADER>t :Denite grep::--
 
 " sort, select lines and sort
 vmap <C-s> :sort<CR>
@@ -314,15 +336,20 @@ map ,,r <Plug>(easymotion-repeat)
 map ,,l <Plug>(easymotion-lineforward)
 map ,,h <Plug>(easymotion-linebackward)
 
+let g:ale_elixir_elixir_ls_release = '/Users/ainformatico/work/elixir-ls/rel'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_lint_on_insert_leave = 1
+let g:ale_set_quickfix = 1
 
-let g:ale_linters = {'ruby': ['rubocop', 'ruby'], 'javascript': ['eslint']}
-let g:ale_lint_on_text_changed = "normal"
+let g:ale_linters = {'ruby': ['rubocop', 'ruby'], 'elixir': ['credo', 'dialyxir', 'mix', 'elixir-ls'], 'javascript': ['eslint'], '*': ['trim_whitespace', 'remove_trailing_lines']}
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_delay = 100
 let g:ale_sign_column_always = 0
+let g:ale_completion_enabled = 1
 let g:ale_javascript_eslint_use_global = 0
+let g:ale_fix_on_save = 1
 
 
 let g:ale_fixers = {
@@ -332,6 +359,9 @@ let g:ale_fixers = {
 \   'javascript': [
 \       'eslint',
 \       'prettier',
+\   ],
+\   'elixir': [
+\       'mix_format',
 \   ],
 \}
 
