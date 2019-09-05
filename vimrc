@@ -203,7 +203,6 @@ nmap <S-T> :NERDTreeToggle<CR>
 nmap <C-t> :NERDTreeFind<CR>
 " search and replace selected text
 vnoremap <C-h> "hy:%s/<C-r>h//gc<left><left><left>
-nnoremap <LEADER>f :Denite file/rec<CR>
 
 vnoremap <C-f> :fold<CR>
 
@@ -226,84 +225,61 @@ call denite#custom#var('grep', 'command', ['ag'])
 call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
 call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'pattern_opt', [])
-call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#source('grep', 'args', ['', '', ''])
 
-call denite#custom#option('default', 'updatetime', 1)
-call denite#custom#option('default', 'max_candidate_width', 100)
-call denite#custom#option('default', 'highlight_matched_char', 'NonText')
-call denite#custom#option('default', 'highlight_matched', 'WarningMsg')
-call denite#custom#option('default', 'highlight_mode_insert', 'PMenu')
+call denite#custom#option('default', 'filter-updatetime', 1)
+call denite#custom#option('default', 'max-candidate-width', 100)
+call denite#custom#option('_', 'statusline', v:false)
 
-" Use mapping action directly
-call denite#custom#map(
-      \ 'normal',
-      \ '<C-s>',
-      \ '<denite:do_action:split>',
-      \ 'noremap'
-      \)
-call denite#custom#map(
-      \ 'normal',
-      \ '<C-v>',
-      \ '<denite:do_action:vsplit>',
-      \ 'noremap'
-      \)
-call denite#custom#map(
-      \ 'normal',
-      \ '<C-t>',
-      \ '<denite:do_action:tabopen>',
-      \ 'noremap'
-      \)
-call denite#custom#map(
-      \ 'insert',
-      \ '<C-s>',
-      \ '<denite:do_action:split>',
-      \ 'noremap'
-      \)
-call denite#custom#map(
-      \ 'insert',
-      \ '<C-v>',
-      \ '<denite:do_action:vsplit>',
-      \ 'noremap'
-      \)
-call denite#custom#map(
-      \ 'insert',
-      \ '<C-t>',
-      \ '<denite:do_action:tabopen>',
-      \ 'noremap'
-      \)
-call denite#custom#map(
-      \ 'insert',
-      \ '<ESC>',
-      \ '<denite:enter_mode:normal>',
-      \ 'noremap'
-      \)
-call denite#custom#map(
-      \ 'normal',
-      \ '<ESC>',
-      \ '<denite:quit>',
-      \ 'noremap'
-      \)
-call denite#custom#map(
-      \ 'insert',
-      \ '<C-j>',
-      \ '<denite:move_to_next_line>',
-      \ 'noremap'
-      \)
-call denite#custom#map(
-      \ 'insert',
-      \ '<C-k>',
-      \ '<denite:move_to_previous_line>',
-      \ 'noremap'
-      \)
-
-nnoremap <LEADER>b :Denite buffer<CR>
+" Define mappings
+nnoremap <LEADER>f :Denite file/rec -start-filter<CR>
+nnoremap <LEADER>b :Denite buffer -start-filter<CR>
 nnoremap <LEADER>g :Denite grep<CR>
 nnoremap <LEADER>d :Denite grep -path=
-nnoremap <LEADER>r :Denite grep:::!<CR>
-nnoremap <LEADER>r :Denite grep:::!<CR>
-nnoremap <LEADER>t :Denite grep::--
+nnoremap <LEADER>r :Denite grep:::! -start-filter<CR>
+
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+  nnoremap <silent><buffer><expr> <C-s>
+  \ denite#do_map('do_action', 'split')
+  nnoremap <silent><buffer><expr> <C-v>
+  \ denite#do_map('do_action', 'vsplit')
+  nnoremap <silent><buffer><expr> <C-t>
+  \ denite#do_map('do_action', 'tabopen')
+  nnoremap <silent><buffer><expr> <ESC>
+  \ denite#do_map('quit')
+endfunction
+
+autocmd FileType denite-filter call s:denite_filter_my_settings()
+function! s:denite_filter_my_settings() abort
+  call deoplete#custom#buffer_option('auto_complete', v:false)
+  inoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  imap <silent><buffer> <ESC> <Plug>(denite_filter_quit)
+  inoremap <silent><buffer><expr> <C-s>
+  \ denite#do_map('do_action', 'split')
+  inoremap <silent><buffer><expr> <C-v>
+  \ denite#do_map('do_action', 'vsplit')
+  inoremap <silent><buffer><expr> <C-t>
+  \ denite#do_map('do_action', 'tabopen')
+  inoremap <silent><buffer> <C-j>
+  \ <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
+  inoremap <silent><buffer> <C-k>
+  \ <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
+endfunction
 
 " sort, select lines and sort
 vmap <C-s> :sort<CR>
