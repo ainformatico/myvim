@@ -60,6 +60,8 @@ nnoremap <LEADER>ts :AS<CR>
 nnoremap <LEADER>ta :A<CR>
 nnoremap <LEADER>tt :TagbarToggle<CR>
 
+nnoremap <LEADER>u :UndotreeToggle<CR>:UndotreeFocus<CR>
+
 set nopaste
 
 let g:neosnippet#enable_snipmate_compatibility = 1
