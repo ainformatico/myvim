@@ -62,3 +62,4 @@ Included plugins
 * neco-syntax <https://github.com/Shougo/neco-syntax>
 * tagbar <https://github.com/majutsushi/tagbar>
 * vim-elixir <https://github.com/elixir-editors/vim-elixir>
+* undotree <https://github.com/mbbill/undotree>
