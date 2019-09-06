@@ -68,8 +68,15 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 
 if has('nvim')
   let g:deoplete#enable_at_startup = 1
-  let g:extract_maxCount = 10
+  call deoplete#custom#option('num_processes', 8)
 endif
+
+call deoplete#custom#var('omni', 'input_patterns', {
+      \ 'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
+      \})
+"call deoplete#custom#option('sources', {
+"\ '_': ['around', 'buffer', 'file', 'member', 'omni'],
+"\})
 
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
@@ -134,7 +141,6 @@ endif
 set nocursorline " highlight current line
 set nocursorcolumn " show colum cursor
 set smartcase " if there are caps, go case-sensitive
-set omnifunc=on " autocomplete function
 set completeopt=menu,preview " autocomplete function
 set wildmenu " command-line completion
 set scrolloff=3 " lines before EOF
