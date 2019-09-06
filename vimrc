@@ -69,14 +69,10 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 if has('nvim')
   let g:deoplete#enable_at_startup = 1
   call deoplete#custom#option('num_processes', 8)
+  call deoplete#custom#var('omni', 'input_patterns', {
+        \ 'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
+        \})
 endif
-
-call deoplete#custom#var('omni', 'input_patterns', {
-      \ 'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
-      \})
-"call deoplete#custom#option('sources', {
-"\ '_': ['around', 'buffer', 'file', 'member', 'omni'],
-"\})
 
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
