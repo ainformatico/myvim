@@ -37,6 +37,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'carmonw/elm-vim'
 Plug 'pbogut/deoplete-elm'
 Plug 'mbbill/undotree'
+Plug 'junegunn/vim-peekaboo'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'Shougo/neco-syntax'

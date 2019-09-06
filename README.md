@@ -63,3 +63,4 @@ Included plugins
 * tagbar <https://github.com/majutsushi/tagbar>
 * vim-elixir <https://github.com/elixir-editors/vim-elixir>
 * undotree <https://github.com/mbbill/undotree>
+* peekaboo <https://github.com/junegunn/vim-peekaboo>
