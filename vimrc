@@ -396,29 +396,29 @@ map <F8> :bn<CR>
 " Maps ESC to exit terminal's insert mode
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
+
+  " Maps ctrl-b + c to open a new tab window
+  nnoremap <C-b>c :tabnew +terminal<CR>
+  tnoremap <C-b>c <C-\><C-n>:tabnew +terminal<CR>
+
+  " Maps ctrl-b + v to open a new horizontal split with a terminal
+  nnoremap <C-b>v :new +terminal<CR>
+  tnoremap <C-b>v <C-\><C-n>:new +terminal<CR>
+
+  " Maps ctrl-b + V to open a new vertical split with a terminal
+  nnoremap <C-b>V :vnew +terminal<CR>
+  tnoremap <C-b>V <C-\><C-n>:vnew +terminal<cr>
+
+  nnoremap <C-b>t :tabe +terminal<CR>
+  tnoremap <C-b>t <C-\><C-n>:tabe +terminal<cr>
+
+  augroup neovim_terminal
+    autocmd!
+
+    " Enter Terminal-mode (insert) automatically
+    autocmd TermOpen * startinsert
+
+    " Disables number lines on terminal buffers
+    autocmd TermOpen * :set nonumber norelativenumber
+  augroup END
 endif
-
-" Maps ctrl-b + c to open a new tab window
-nnoremap <C-b>c :tabnew +terminal<CR>
-tnoremap <C-b>c <C-\><C-n>:tabnew +terminal<CR>
-
-" Maps ctrl-b + v to open a new horizontal split with a terminal
-nnoremap <C-b>v :new +terminal<CR>
-tnoremap <C-b>v <C-\><C-n>:new +terminal<CR>
-
-" Maps ctrl-b + V to open a new vertical split with a terminal
-nnoremap <C-b>V :vnew +terminal<CR>
-tnoremap <C-b>V <C-\><C-n>:vnew +terminal<cr>
-
-nnoremap <C-b>t :tabe +terminal<CR>
-tnoremap <C-b>t <C-\><C-n>:tabe +terminal<cr>
-
-augroup neovim_terminal
-  autocmd!
-
-  " Enter Terminal-mode (insert) automatically
-  autocmd TermOpen * startinsert
-
-  " Disables number lines on terminal buffers
-  autocmd TermOpen * :set nonumber norelativenumber
-augroup END
