@@ -38,6 +38,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'carmonw/elm-vim'
 Plug 'mbbill/undotree'
 Plug 'junegunn/vim-peekaboo'
+Plug 'sjl/gundo.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 if has('nvim')
   Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
