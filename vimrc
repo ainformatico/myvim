@@ -39,7 +39,7 @@ Plug 'carmonw/elm-vim'
 Plug 'mbbill/undotree'
 Plug 'junegunn/vim-peekaboo'
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
   Plug 'Shougo/neco-syntax'
 else
   Plug 'Shougo/neocomplete.vim'
@@ -48,6 +48,13 @@ Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'jparise/vim-graphql'
 call plug#end()
+
+if has('nvim')
+  imap <C-l> <Plug>(coc-snippets-expand)
+  imap <C-j> <Plug>(coc-snippets-expand-jump)
+  let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-solargraph', 'coc-gocode', 'coc-go', 'coc-python', 'coc-tag', 'coc-json', 'coc-html', 'coc-css', 'coc-yaml', 'coc-highlight', 'coc-marketplace']
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+end
 
 nnoremap ]p p=`]
 nnoremap ]P P=`]
@@ -66,14 +73,6 @@ set nopaste
 
 let g:neosnippet#enable_snipmate_compatibility = 1
 
-if has('nvim')
-  let g:deoplete#enable_at_startup = 1
-  call deoplete#custom#option('num_processes', 8)
-  call deoplete#custom#var('omni', 'input_patterns', {
-        \ 'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::']
-        \})
-endif
-
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
@@ -91,7 +90,6 @@ set lazyredraw
 set ttyfast
 set background=light
 set regexpengine=1
-let g:ruby_path = system('echo $HOME/.rbenv/shims')
 
 set title
 
@@ -271,7 +269,6 @@ endfunction
 
 autocmd FileType denite-filter call s:denite_filter_my_settings()
 function! s:denite_filter_my_settings() abort
-  call deoplete#custom#buffer_option('auto_complete', v:false)
   inoremap <silent><buffer><expr> <CR>
   \ denite#do_map('do_action')
   imap <silent><buffer> <ESC> <Plug>(denite_filter_quit)
