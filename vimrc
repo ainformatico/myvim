@@ -38,6 +38,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'carmonw/elm-vim'
 Plug 'mbbill/undotree'
 Plug 'junegunn/vim-peekaboo'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 if has('nvim')
   Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
   Plug 'Shougo/neco-syntax'
@@ -55,6 +56,16 @@ if has('nvim')
   let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-solargraph', 'coc-gocode', 'coc-go', 'coc-python', 'coc-tag', 'coc-json', 'coc-html', 'coc-css', 'coc-yaml', 'coc-highlight', 'coc-marketplace']
   autocmd CursorHold * silent call CocActionAsync('highlight')
 end
+
+"let g:go_fmt_command = 'goimports'
+let g:go_fmt_command = 'gopls'
+let g:go_imports_autosave = 1
+let g:go_auto_type_info = 1
+let g:go_updatetime = 400
+let g:go_jump_to_error = 0
+let g:go_metalinter_autosave = 1
+
+nnoremap <LEADER>gt :GoTest<CR>
 
 nnoremap ]p p=`]
 nnoremap ]P P=`]
@@ -176,6 +187,9 @@ autocmd Filetype php set filetype=php.doxygen
 " set comment style
 autocmd Filetype php set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
 autocmd Filetype php set formatoptions=croql
+" set tab style
+autocmd Filetype go set listchars=tab:\ \ ,eol:¬
+autocmd Filetype go set noexpandtab
 " delete fugitive buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
 " highlight 'NOTE' statement
