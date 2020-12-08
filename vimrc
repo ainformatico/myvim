@@ -352,7 +352,7 @@ let g:ale_fixers = {
 \   ],
 \   'javascript': [
 \       'eslint',
-\       'prettier',
+\       'prettier_eslint',
 \   ],
 \   'elixir': [
 \       'mix_format',
