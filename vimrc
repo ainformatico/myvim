@@ -35,7 +35,6 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'c-brenn/phoenix.vim'
 Plug 'tpope/vim-projectionist'
 Plug 'carmonw/elm-vim'
-Plug 'pbogut/deoplete-elm'
 Plug 'mbbill/undotree'
 Plug 'junegunn/vim-peekaboo'
 if has('nvim')
