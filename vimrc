@@ -28,10 +28,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-rbenv'
 Plug 'vim-ruby/vim-ruby'
-Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/closetag.vim'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'w0rp/ale'
 Plug 'elixir-editors/vim-elixir'
 Plug 'c-brenn/phoenix.vim'
 Plug 'tpope/vim-projectionist'
@@ -41,7 +39,7 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'sjl/gundo.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 if has('nvim')
-  Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'Shougo/neco-syntax'
 else
   Plug 'Shougo/neocomplete.vim'
@@ -54,9 +52,13 @@ call plug#end()
 if has('nvim')
   imap <C-l> <Plug>(coc-snippets-expand)
   imap <C-j> <Plug>(coc-snippets-expand-jump)
-  let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-solargraph', 'coc-gocode', 'coc-go', 'coc-python', 'coc-tag', 'coc-json', 'coc-html', 'coc-css', 'coc-yaml', 'coc-highlight', 'coc-marketplace']
+  nmap <LEADER>do <Plug>(coc-codeaction)
+
+  let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-solargraph', 'coc-gocode', 'coc-go', 'coc-python', 'coc-tag', 'coc-json', 'coc-html', 'coc-css', 'coc-yaml', 'coc-highlight', 'coc-marketplace', 'coc-tsserver', 'coc-prettier', 'coc-eslint']
   autocmd CursorHold * silent call CocActionAsync('highlight')
 end
+
+let g:ruby_host_prog = '~/.rbenv/shims/neovim-ruby-host'
 
 "let g:go_fmt_command = 'goimports'
 let g:go_fmt_command = 'gopls'
@@ -101,7 +103,7 @@ set synmaxcol=150
 set lazyredraw
 set ttyfast
 set background=light
-set regexpengine=1
+set re=0
 
 set title
 
@@ -316,7 +318,7 @@ nnoremap ` '
 nnoremap '' `.
 
 " open Gstatus window
-nmap <LEADER>gs :Gstatus<cr>
+nmap <LEADER>gs :Git<cr>
 
 " easy motion
 map ,, <Plug>(easymotion-prefix)
@@ -330,37 +332,8 @@ map ,,r <Plug>(easymotion-repeat)
 map ,,l <Plug>(easymotion-lineforward)
 map ,,h <Plug>(easymotion-linebackward)
 
-let g:ale_elixir_elixir_ls_release = '/Users/ainformatico/work/elixir-ls/rel'
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_lint_on_insert_leave = 1
-let g:ale_set_quickfix = 1
-
-let g:ale_linters = {'ruby': ['rubocop', 'ruby'], 'elixir': ['credo', 'dialyxir', 'mix', 'elixir-ls'], 'javascript': ['eslint'], '*': ['trim_whitespace', 'remove_trailing_lines']}
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_delay = 100
-let g:ale_sign_column_always = 0
-let g:ale_completion_enabled = 1
-let g:ale_javascript_eslint_use_global = 0
-let g:ale_fix_on_save = 1
-
-
-let g:ale_fixers = {
-\   'ruby': [
-\       'rubocop',
-\   ],
-\   'javascript': [
-\       'eslint',
-\       'prettier_eslint',
-\   ],
-\   'elixir': [
-\       'mix_format',
-\   ],
-\}
-
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
+nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
 
 map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
@@ -384,7 +357,6 @@ function! Multiple_cursors_before()
     exe 'NeoCompleteLock'
   endif
 
-  exe 'ALEDisable'
 endfunction
 
 function! Multiple_cursors_after()
@@ -392,7 +364,6 @@ function! Multiple_cursors_after()
     exe 'NeoCompleteUnlock'
   endif
 
-  exe 'ALEEnable'
 endfunction
 
 " Terminal settings
@@ -400,10 +371,8 @@ let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 set updatetime=100
 
-let &shell='/bin/bash --login'
 
-map <F7> :bp<CR>
-map <F8> :bn<CR>
+map <F8> :let @+=expand('%')<CR>
 
 " Maps ESC to exit terminal's insert mode
 if has('nvim')
