@@ -60,7 +60,6 @@ end
 
 let g:ruby_host_prog = '~/.rbenv/shims/neovim-ruby-host'
 
-"let g:go_fmt_command = 'goimports'
 let g:go_fmt_command = 'gopls'
 let g:go_imports_autosave = 1
 let g:go_auto_type_info = 1
@@ -99,7 +98,6 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 endif
 
 set synmaxcol=150
-"syntax sync minlines=256
 set lazyredraw
 set ttyfast
 set background=light
@@ -107,7 +105,6 @@ set re=0
 
 set title
 
-" filetype plugin indent on
 syntax on " enables syntax highlight
 set undodir=/tmp,.
 set undofile
@@ -153,17 +150,6 @@ set completeopt=menu,preview " autocomplete function
 set wildmenu " command-line completion
 set scrolloff=3 " lines before EOF
 set virtualedit=block " allow virtual editing in Visual block mode
-" gui options
-colorscheme solarized " colorscheme
-if has("gui_running")
-  set showtabline=2 " Always show tab line
-  if has('mac')
-    set guifont=Monaco:h17 " gui font
-  elseif has('unix')
-    set guifont=Monospace\ 9 " gui font
-  endif
-  set guioptions=aAeirL " remove unused menus
-endif
 " save and load folds
 autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
@@ -350,7 +336,6 @@ xmap <silent> ib <Plug>CamelCaseMotion_iw
 omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
 
-
 " Disable plugins when using mutiple cursors
 function! Multiple_cursors_before()
   if !has('nvim')
@@ -370,7 +355,6 @@ endfunction
 let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 set updatetime=100
-
 
 map <F8> :let @+=expand('%')<CR>
 
