@@ -1,64 +1,47 @@
 call plug#begin('~/.vim/bundle')
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+Plug 'phaazon/hop.nvim'
 Plug 'slashmili/alchemist.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'Raimondi/delimitMate'
-Plug 'Shougo/denite.nvim'
-Plug 'Shougo/neomru.vim'
+Plug 'windwp/nvim-autopairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bkad/CamelCaseMotion'
 Plug 'gregsexton/gitv', { 'on': ['Gitv!', 'Gitv'] }
 Plug 'kana/vim-textobj-user'
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'kshenoy/vim-signature'
 Plug 'majutsushi/tagbar'
-Plug 'msanders/snipmate.vim'
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'terryma/vim-multiple-cursors'
+Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'mg979/vim-visual-multi'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-haml', { 'for': 'haml' }
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-rbenv'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/closetag.vim'
-Plug 'mustache/vim-mustache-handlebars'
 Plug 'elixir-editors/vim-elixir'
 Plug 'c-brenn/phoenix.vim'
-Plug 'tpope/vim-projectionist'
-Plug 'carmonw/elm-vim'
 Plug 'mbbill/undotree'
 Plug 'junegunn/vim-peekaboo'
-Plug 'sjl/gundo.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-if has('nvim')
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'Shougo/neco-syntax'
-else
-  Plug 'Shougo/neocomplete.vim'
-endif
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jparise/vim-graphql'
 call plug#end()
 
-if has('nvim')
-  imap <C-l> <Plug>(coc-snippets-expand)
-  imap <C-j> <Plug>(coc-snippets-expand-jump)
-  nmap <LEADER>do <Plug>(coc-codeaction)
+imap <C-l> <Plug>(coc-snippets-expand)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+nmap <LEADER>do <Plug>(coc-codeaction)
 
-  let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-solargraph', 'coc-gocode', 'coc-go', 'coc-python', 'coc-tag', 'coc-json', 'coc-html', 'coc-css', 'coc-yaml', 'coc-highlight', 'coc-marketplace', 'coc-tsserver', 'coc-prettier', 'coc-eslint']
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-end
-
-let g:ruby_host_prog = '~/.rbenv/shims/neovim-ruby-host'
+let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-solargraph', 'coc-gocode', 'coc-go', 'coc-python', 'coc-tag', 'coc-json', 'coc-html', 'coc-css', 'coc-yaml', 'coc-highlight', 'coc-marketplace', 'coc-tsserver', 'coc-prettier', 'coc-eslint']
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 let g:go_fmt_command = 'gopls'
 let g:go_imports_autosave = 1
@@ -79,33 +62,18 @@ nnoremap <LEADER>tv :AV<CR>
 nnoremap <LEADER>ts :AS<CR>
 nnoremap <LEADER>ta :A<CR>
 nnoremap <LEADER>tt :TagbarToggle<CR>
+nnoremap <LEADER>js :.!python3 -m json.tool<CR>
 
 nnoremap <LEADER>u :UndotreeToggle<CR>:UndotreeFocus<CR>
 
+syntax on " enables syntax highlight
 set nopaste
-
-let g:neosnippet#enable_snipmate_compatibility = 1
-
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 2
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-
 set synmaxcol=150
 set lazyredraw
 set ttyfast
 set background=light
 set re=0
-
 set title
-
-syntax on " enables syntax highlight
 set undodir=/tmp,.
 set undofile
 set undolevels=10000
@@ -135,14 +103,7 @@ set showmatch " show matching elements
 set nrformats= " when using c-a and c-x do not assume 007 as octal
 set foldenable " enable folding
 set mouse=a " enable mouse
-if has('mac')
-  " fixes issues in MacVim
-elseif has('nvim')
-  set clipboard+=unnamedplus " advanced clipboard"
-else
-  set clipboard=autoselect
-  set clipboard=unnamed " advanced clipboard"
-endif
+set clipboard+=unnamedplus " advanced clipboard"
 set nocursorline " highlight current line
 set nocursorcolumn " show colum cursor
 set smartcase " if there are caps, go case-sensitive
@@ -154,10 +115,8 @@ set virtualedit=block " allow virtual editing in Visual block mode
 autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
 " closetag plugin
-if has('unix')
-  autocmd Filetype html,xml,xsl,javascript.jsx,eelixir source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
-  set shellcmdflag=-c "set interactive shell, load bash profile
-endif
+autocmd Filetype html,xml,xsl,javascript.jsx,eelixir source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
+set shellcmdflag=-c "set interactive shell, load bash profile
 " highlight spaces
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 autocmd BufWinEnter * match ExtraWhitespace /[ ]\{1,}$/
@@ -170,12 +129,6 @@ autocmd BufWinEnter Jenkinsfile silent! set ft=groovy
 autocmd BufWinEnter COMMIT_EDITMSG setl spell
 " advanced strict indent, useful in c files not in sass i.e
 autocmd Filetype c,cpp set cindent
-" set doxygen code document style
-autocmd Filetype javascript set filetype=javascript.doxygen
-autocmd Filetype php set filetype=php.doxygen
-" set comment style
-autocmd Filetype php set comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
-autocmd Filetype php set formatoptions=croql
 " set tab style
 autocmd Filetype go set listchars=tab:\ \ ,eol:¬
 autocmd Filetype go set noexpandtab
@@ -183,7 +136,6 @@ autocmd Filetype go set noexpandtab
 autocmd BufReadPost fugitive://* set bufhidden=delete
 " highlight 'NOTE' statement
 autocmd BufWinEnter * silent! syn keyword javaScriptCommentTodo NOTE contained
-autocmd BufWinEnter * silent! syn keyword coffeeTodo NOTE contained
 autocmd BufWinEnter * silent! syn keyword vimTodo NOTE contained
 " maps
 " switch to buffer, if the target buffer is already displayed in a window or tab, that window will be displayed,
@@ -215,77 +167,36 @@ vnoremap <C-f> :fold<CR>
 
 vnoremap <C-b> :Gblame<CR>
 
-call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-call denite#custom#source('file/mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
-call denite#custom#source('file/rec', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
-call denite#custom#source('file/rec', 'sorters', ['sorter_rank'])
-" Change default prompt
-call denite#custom#option('default', 'prompt', '>')
+" autopairs
+lua << EOF
+require("nvim-autopairs").setup {}
+EOF
 
-" Change ignore_globs
-call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/',
-      \'.ropeproject/', '__pycache__/', 'venv/', 'images/', '*.min.*',
-      \'img/', 'fonts/', 'node_modules', 'public/assets/**/bundle/*.js', 'public/assets/**/bundle/*.map'])
 
-" Ag command on grep source
-call denite#custom#var('grep', 'command', ['ag'])
-call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', [])
-call denite#custom#var('grep', 'final_opts', [])
-call denite#custom#source('grep', 'args', ['', '', ''])
+" telescope
+" https://github.com/nvim-telescope/telescope.nvim/issues/2145
+highlight NormalFloat ctermfg=DarkGrey
+lua << EOF
+local actions = require('telescope.actions')
+local builtin = require('telescope.builtin')
 
-call denite#custom#option('default', 'filter-updatetime', 1)
-call denite#custom#option('default', 'max-candidate-width', 100)
-call denite#custom#option('_', 'statusline', v:false)
+require('telescope').setup({
+  defaults = {
+     mappings = {
+      i = {
+        ["<c-j>"] = actions.move_selection_next,
+        ["<c-k>"] = actions.move_selection_previous,
+      },
+    },
+  }
+})
 
-" Define mappings
-nnoremap <LEADER>f :Denite file/rec -start-filter<CR>
-nnoremap <LEADER>b :Denite buffer -start-filter<CR>
-nnoremap <LEADER>g :Denite grep<CR>
-nnoremap <LEADER>d :Denite grep -path=
-nnoremap <LEADER>r :Denite grep:::! -start-filter<CR>
-
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
-  \ denite#do_map('toggle_select').'j'
-  nnoremap <silent><buffer><expr> <C-s>
-  \ denite#do_map('do_action', 'split')
-  nnoremap <silent><buffer><expr> <C-v>
-  \ denite#do_map('do_action', 'vsplit')
-  nnoremap <silent><buffer><expr> <C-t>
-  \ denite#do_map('do_action', 'tabopen')
-  nnoremap <silent><buffer><expr> <ESC>
-  \ denite#do_map('quit')
-endfunction
-
-autocmd FileType denite-filter call s:denite_filter_my_settings()
-function! s:denite_filter_my_settings() abort
-  inoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  imap <silent><buffer> <ESC> <Plug>(denite_filter_quit)
-  inoremap <silent><buffer><expr> <C-s>
-  \ denite#do_map('do_action', 'split')
-  inoremap <silent><buffer><expr> <C-v>
-  \ denite#do_map('do_action', 'vsplit')
-  inoremap <silent><buffer><expr> <C-t>
-  \ denite#do_map('do_action', 'tabopen')
-  inoremap <silent><buffer> <C-j>
-  \ <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
-  inoremap <silent><buffer> <C-k>
-  \ <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
-endfunction
+vim.keymap.set('n', '<leader>f', builtin.find_files, {})
+vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
+vim.keymap.set('v', '<leader>g', builtin.grep_string, {})
+vim.keymap.set('n', '<leader>b', builtin.buffers, {})
+vim.keymap.set('n', '<leader>t', builtin.help_tags, {})
+EOF
 
 " sort, select lines and sort
 vmap <C-s> :sort<CR>
@@ -306,17 +217,52 @@ nnoremap '' `.
 " open Gstatus window
 nmap <LEADER>gs :Git<cr>
 
-" easy motion
-map ,, <Plug>(easymotion-prefix)
-map  ,,/ <Plug>(easymotion-sn)
-omap ,,/ <Plug>(easymotion-tn)
-map  ,,n <Plug>(easymotion-next)
-map  ,,N <Plug>(easymotion-prev)
-map ,,w <Plug>(easymotion-bd-w)
-map ,,a <Plug>(easymotion-jumptoanywhere)
-map ,,r <Plug>(easymotion-repeat)
-map ,,l <Plug>(easymotion-lineforward)
-map ,,h <Plug>(easymotion-linebackward)
+" sitter
+lua <<EOF
+local treesitter = require('nvim-treesitter.configs')
+treesitter.setup({
+  -- A list of parser names, or "all" (the four listed parsers should always be installed)
+  -- ensure_installed = { "ruby", "bash", "typescript", "elixir", "gitignore", "json", "lua", "python", "regex", "rust", "go", "scss", "vim", "terraform" },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+
+  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+})
+EOF
+
+" hop
+
+lua <<EOF
+local hop = require('hop')
+hop.setup({
+  direction = nil,
+  current_line_only = false,
+  case_insensitive = false,
+  multi_windows = true
+})
+
+vim.keymap.set('n', ',,w', function()
+  hop.hint_words({})
+end, {remap=true})
+EOF
+
 
 nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
 nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
@@ -336,54 +282,15 @@ xmap <silent> ib <Plug>CamelCaseMotion_iw
 omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
 
-" Disable plugins when using mutiple cursors
-function! Multiple_cursors_before()
-  if !has('nvim')
-    exe 'NeoCompleteLock'
-  endif
-
-endfunction
-
-function! Multiple_cursors_after()
-  if !has('nvim')
-    exe 'NeoCompleteUnlock'
-  endif
-
-endfunction
+let g:VM_maps = {}
+let g:VM_maps['Skip Region'] = '<C-x>'
 
 " Terminal settings
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+
+let g:python2_host_prog = '/usr/bin/python'
+"let g:python3_host_prog = '/usr/local/bin/python3'
+"let g:python3_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/opt/homebrew/bin/python3'
 set updatetime=100
 
 map <F8> :let @+=expand('%')<CR>
-
-" Maps ESC to exit terminal's insert mode
-if has('nvim')
-  tnoremap <Esc> <C-\><C-n>
-
-  " Maps ctrl-b + c to open a new tab window
-  nnoremap <C-b>c :tabnew +terminal<CR>
-  tnoremap <C-b>c <C-\><C-n>:tabnew +terminal<CR>
-
-  " Maps ctrl-b + v to open a new horizontal split with a terminal
-  nnoremap <C-b>v :new +terminal<CR>
-  tnoremap <C-b>v <C-\><C-n>:new +terminal<CR>
-
-  " Maps ctrl-b + V to open a new vertical split with a terminal
-  nnoremap <C-b>V :vnew +terminal<CR>
-  tnoremap <C-b>V <C-\><C-n>:vnew +terminal<cr>
-
-  nnoremap <C-b>t :tabe +terminal<CR>
-  tnoremap <C-b>t <C-\><C-n>:tabe +terminal<cr>
-
-  augroup neovim_terminal
-    autocmd!
-
-    " Enter Terminal-mode (insert) automatically
-    autocmd TermOpen * startinsert
-
-    " Disables number lines on terminal buffers
-    autocmd TermOpen * :set nonumber norelativenumber
-  augroup END
-endif
