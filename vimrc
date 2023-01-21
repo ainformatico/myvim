@@ -36,36 +36,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jparise/vim-graphql'
 call plug#end()
 
-imap <C-l> <Plug>(coc-snippets-expand)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-nmap <LEADER>do <Plug>(coc-codeaction)
-
-let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-solargraph', 'coc-gocode', 'coc-go', 'coc-python', 'coc-tag', 'coc-json', 'coc-html', 'coc-css', 'coc-yaml', 'coc-highlight', 'coc-marketplace', 'coc-tsserver', 'coc-prettier', 'coc-eslint']
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-let g:go_fmt_command = 'gopls'
-let g:go_imports_autosave = 1
-let g:go_auto_type_info = 1
-let g:go_updatetime = 400
-let g:go_jump_to_error = 0
-let g:go_metalinter_autosave = 1
-
-nnoremap <LEADER>gt :GoTest<CR>
-
-nnoremap ]p p=`]
-nnoremap ]P P=`]
-
-let g:airline_theme='solarized'
-let g:airline#extensions#tabline#enabled = 0
-
-nnoremap <LEADER>tv :AV<CR>
-nnoremap <LEADER>ts :AS<CR>
-nnoremap <LEADER>ta :A<CR>
-nnoremap <LEADER>tt :TagbarToggle<CR>
-nnoremap <LEADER>js :.!python3 -m json.tool<CR>
-
-nnoremap <LEADER>u :UndotreeToggle<CR>:UndotreeFocus<CR>
-
+" Basic config
 syntax on " enables syntax highlight
 set nopaste
 set synmaxcol=150
@@ -111,6 +82,16 @@ set completeopt=menu,preview " autocomplete function
 set wildmenu " command-line completion
 set scrolloff=3 " lines before EOF
 set virtualedit=block " allow virtual editing in Visual block mode
+" switch to buffer, if the target buffer is already displayed in a window or tab, that window will be displayed,
+  " otherwise, the current window will be vsplit
+set switchbuf=usetab
+" set the waiting timeout
+set timeoutlen=400
+set updatetime=100
+" Terminal settings
+let g:python2_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/opt/homebrew/bin/python3'
+
 " save and load folds
 autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
@@ -137,10 +118,14 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " highlight 'NOTE' statement
 autocmd BufWinEnter * silent! syn keyword javaScriptCommentTodo NOTE contained
 autocmd BufWinEnter * silent! syn keyword vimTodo NOTE contained
-" maps
-" switch to buffer, if the target buffer is already displayed in a window or tab, that window will be displayed,
-  " otherwise, the current window will be vsplit
-set switchbuf=usetab
+
+" Maps
+nnoremap ]p p=`]
+nnoremap ]P P=`]
+"" Copy path of file to clipboard
+map <F8> :let @+=expand('%')<CR>
+"" Lint json
+nnoremap <LEADER>js :.!python3 -m json.tool<CR>
 " yank to OS
 map <F9> "+y
 " paste from OS
@@ -157,23 +142,76 @@ imap <C-h> <BS>
 imap <C-l> <DEL>
 imap <C-s> <ESC>:w<CR>
 nmap <C-s> :w<CR>
+" search and replace selected text
+vnoremap <C-h> "hy:%s/<C-r>h//gc<left><left><left>
+vnoremap <C-f> :fold<CR>
+" sort, select lines and sort
+vmap <C-s> :sort<CR>
+" hide search matches
+nnoremap <LEADER><LEADER> :nohl<CR>
+" search and replace in selected area
+vnoremap <C-g> :s/\%V//gc<left><left><left><left>
+" search in selected area
+vnoremap // :/\%V
+" line precision
+nnoremap ` '
+" go to last position, column precision
+nnoremap '' `.
+
+"""" Plugins """""
+
+" Visual Multi (multiple buffers)
+
+let g:VM_maps = {}
+let g:VM_maps['Skip Region'] = '<C-x>'
+
+" Fugivite
+nmap <LEADER>gs :Git<cr>
+
+" Coc
+imap <C-l> <Plug>(coc-snippets-expand)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+nmap <LEADER>do <Plug>(coc-codeaction)
+nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
+nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
+
+let g:coc_global_extensions = ['coc-tsserver', 'coc-snippets', 'coc-solargraph', 'coc-gocode', 'coc-go', 'coc-python', 'coc-tag', 'coc-json', 'coc-html', 'coc-css', 'coc-yaml', 'coc-highlight', 'coc-marketplace', 'coc-tsserver', 'coc-prettier', 'coc-eslint']
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" go
+let g:go_fmt_command = 'gopls'
+let g:go_imports_autosave = 1
+let g:go_auto_type_info = 1
+let g:go_updatetime = 400
+let g:go_jump_to_error = 0
+let g:go_metalinter_autosave = 1
+nnoremap <LEADER>gt :GoTest<CR>
+
+" Airline
+let g:airline_theme='solarized'
+let g:airline#extensions#tabline#enabled = 0
+
+" Ruby/Rspec
+nnoremap <LEADER>tv :AV<CR>
+nnoremap <LEADER>ts :AS<CR>
+nnoremap <LEADER>ta :A<CR>
+nnoremap <LEADER>tt :TagbarToggle<CR>
+
+" Undotree
+nnoremap <LEADER>u :UndotreeToggle<CR>:UndotreeFocus<CR>
+
 " NERDTree
 nmap <S-T> :NERDTreeToggle<CR>
 nmap <C-t> :NERDTreeFind<CR>
-" search and replace selected text
-vnoremap <C-h> "hy:%s/<C-r>h//gc<left><left><left>
-
-vnoremap <C-f> :fold<CR>
 
 vnoremap <C-b> :Gblame<CR>
 
-" autopairs
+" Autopairs
 lua << EOF
 require("nvim-autopairs").setup {}
 EOF
 
-
-" telescope
+" Telescope
 " https://github.com/nvim-telescope/telescope.nvim/issues/2145
 highlight NormalFloat ctermfg=DarkGrey
 lua << EOF
@@ -198,31 +236,12 @@ vim.keymap.set('n', '<leader>b', builtin.buffers, {})
 vim.keymap.set('n', '<leader>t', builtin.help_tags, {})
 EOF
 
-" sort, select lines and sort
-vmap <C-s> :sort<CR>
-
-" hide search matches
-nnoremap <LEADER><LEADER> :nohl<CR>
-" set the waiting timeout
-set timeoutlen=400
-" search and replace in selected area
-vnoremap <C-g> :s/\%V//gc<left><left><left><left>
-" search in selected area
-vnoremap // :/\%V
-" line precision
-nnoremap ` '
-" go to last position, column precision
-nnoremap '' `.
-
-" open Gstatus window
-nmap <LEADER>gs :Git<cr>
-
-" sitter
+" Sitter
 lua <<EOF
 local treesitter = require('nvim-treesitter.configs')
 treesitter.setup({
   -- A list of parser names, or "all" (the four listed parsers should always be installed)
-  -- ensure_installed = { "ruby", "bash", "typescript", "elixir", "gitignore", "json", "lua", "python", "regex", "rust", "go", "scss", "vim", "terraform" },
+  ensure_installed = { "ruby", "bash", "typescript", "elixir", "gitignore", "json", "lua", "python", "regex", "rust", "go", "scss", "vim", "terraform" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -230,9 +249,6 @@ treesitter.setup({
   -- Automatically install missing parsers when entering buffer
   -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
   auto_install = true,
-
-  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
 
   highlight = {
     -- `false` will disable the whole extension
@@ -247,7 +263,7 @@ treesitter.setup({
 })
 EOF
 
-" hop
+" Hop
 
 lua <<EOF
 local hop = require('hop')
@@ -263,10 +279,7 @@ vim.keymap.set('n', ',,w', function()
 end, {remap=true})
 EOF
 
-
-nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
-nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
-
+" CamelCaseMotion
 map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
 map <silent> e <Plug>CamelCaseMotion_e
@@ -281,16 +294,3 @@ omap <silent> ib <Plug>CamelCaseMotion_iw
 xmap <silent> ib <Plug>CamelCaseMotion_iw
 omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
-
-let g:VM_maps = {}
-let g:VM_maps['Skip Region'] = '<C-x>'
-
-" Terminal settings
-
-let g:python2_host_prog = '/usr/bin/python'
-"let g:python3_host_prog = '/usr/local/bin/python3'
-"let g:python3_host_prog = '/usr/bin/python3'
-let g:python3_host_prog = '/opt/homebrew/bin/python3'
-set updatetime=100
-
-map <F8> :let @+=expand('%')<CR>
