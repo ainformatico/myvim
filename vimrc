@@ -87,7 +87,7 @@ set virtualedit=block " allow virtual editing in Visual block mode
 set switchbuf=usetab
 " set the waiting timeout
 set timeoutlen=400
-set updatetime=100
+set updatetime=300
 " Terminal settings
 let g:python2_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/opt/homebrew/bin/python3'
