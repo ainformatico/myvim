@@ -7,7 +7,7 @@ Plug 'slashmili/alchemist.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'windwp/nvim-autopairs'
-Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bkad/CamelCaseMotion'
 Plug 'gregsexton/gitv', { 'on': ['Gitv!', 'Gitv'] }
@@ -277,6 +277,20 @@ hop.setup({
 vim.keymap.set('n', ',,w', function()
   hop.hint_words({})
 end, {remap=true})
+EOF
+
+" Gitsigns
+lua <<EOF
+require('gitsigns').setup {
+  signs = {
+    add          = { text = '+' },
+    change       = { text = '~' },
+    delete       = { text = '_' },
+    topdelete    = { text = '‾' },
+    changedelete = { text = '/' },
+    untracked    = { text = '?' },
+  },
+}
 EOF
 
 " CamelCaseMotion
