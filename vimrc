@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/bundle')
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
 Plug 'phaazon/hop.nvim'
 Plug 'slashmili/alchemist.vim'
 Plug 'vim-airline/vim-airline'
