@@ -30,7 +30,6 @@ Plug 'vim-scripts/closetag.vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'c-brenn/phoenix.vim'
 Plug 'mbbill/undotree'
-Plug 'junegunn/vim-peekaboo'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jparise/vim-graphql'
