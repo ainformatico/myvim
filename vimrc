@@ -42,6 +42,7 @@ set synmaxcol=150
 set lazyredraw
 set ttyfast
 set background=light
+colorscheme solarized
 set re=0
 set title
 set undodir=/tmp,.
