@@ -19,7 +19,7 @@ require('telescope').setup({
 
 vim.keymap.set('n', '<leader>f', builtin.find_files, {})
 vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
-vim.keymap.set('v', '<leader>g', builtin.grep_string, {})
+vim.keymap.set('v', '<leader>g', 'y<ESC>:Telescope live_grep default_text=<c-r>0<CR>', {})
 vim.keymap.set('n', '<leader>b', builtin.buffers, {})
 vim.keymap.set('n', '<leader>t', builtin.help_tags, {})
 
