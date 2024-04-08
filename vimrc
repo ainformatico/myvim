@@ -253,6 +253,8 @@ nnoremap <LEADER>gt :GoTest<CR>
 " Airline
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 0
+let g:airline_section_b = '%-0.10{getcwd()}'
+
 
 " Ruby/Rspec
 nnoremap <LEADER>tv :AV<CR>
