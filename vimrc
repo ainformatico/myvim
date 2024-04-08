@@ -31,6 +31,7 @@ Plug 'mbbill/undotree'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jparise/vim-graphql'
+Plug 'github/copilot.vim'
 call plug#end()
 
 " Basic config
