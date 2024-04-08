@@ -103,7 +103,7 @@ autocmd BufWinEnter * match ExtraWhitespace /[ ]\{1,}$/
 autocmd WinEnter * match ExtraWhitespace /[ ]\{1,}$/
 " file specific
 " set markdown fieltype
-autocmd BufWinEnter *.md silent! set ft=markdown
+autocmd BufWinEnter *.md,*.mdx silent! set ft=markdown
 autocmd BufWinEnter *.jbuilder,Berksfile,Guardfile,Bowerfile silent! set ft=ruby
 autocmd BufWinEnter Jenkinsfile silent! set ft=groovy
 autocmd BufWinEnter COMMIT_EDITMSG setl spell
