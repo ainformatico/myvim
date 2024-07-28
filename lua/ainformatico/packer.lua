@@ -17,6 +17,12 @@ return require('packer').startup(function(use)
     requires = "nvim-treesitter/nvim-treesitter",
   })
 
+  use({
+    'nvim-treesitter/nvim-treesitter-context',
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
+
   use 'mbbill/undotree'
 
   use 'preservim/nerdtree'
