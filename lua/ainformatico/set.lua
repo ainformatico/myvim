@@ -22,3 +22,7 @@ vim.opt.smartcase = true           -- if there are caps, go case-sensitive
 vim.opt.scrolloff = 3              -- lines before EOF
 vim.opt.switchbuf = "usetab"
 vim.opt.timeoutlen = 400           -- Time in milliseconds to wait for a mapped sequence to complete.
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = ""
+vim.opt.foldlevelstart = 5
