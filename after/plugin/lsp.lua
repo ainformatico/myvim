@@ -9,7 +9,10 @@ lsp_zero.on_attach(function(client, bufnr)
 
   local opts = { buffer = bufnr }
 
+  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition({ reuse_win = true }) end, opts)
   vim.keymap.set("n", "<C-w>gd", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", opts)
+  vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
+  vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
   vim.keymap.set("n", "<C-w><C-v>", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR> | <C-w>L", opts)
   vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
   vim.keymap.set('n', 'gh', function() vim.lsp.buf.hover() end, opts)
@@ -17,7 +20,7 @@ lsp_zero.on_attach(function(client, bufnr)
   vim.keymap.set('n', '<C-k>', function() vim.diagnostic.goto_prev() end, opts)
   vim.keymap.set('n', '<leader>do', function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end, opts)
-  vim.keymap.set('n', '<leader>h', function() vim.lsp.inlay_hint.enable(true) end, opts)
+  vim.keymap.set('n', '<leader>h', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, opts)
 
   vim.keymap.set({ 'n', 'x' }, 'gq', function()
     vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
