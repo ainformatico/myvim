@@ -45,6 +45,8 @@ require('mason-lspconfig').setup({
     end,
     lua_ls = function()
       local lua_opts = lsp_zero.nvim_lua_ls()
+      lua_opts.settings.Lua.hint = { enable = true }
+
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
     -- this is the "custom handler" for `ruby_lsp`
@@ -77,6 +79,8 @@ cmp.setup({
   sources = {
     { name = 'nvim_lsp' },
     { name = 'buffer' },
+    { name = 'nvim_lsp_signature_help' },
+    { name = 'nvim_lua' }
   },
 
   --- (Optional) Show source name in completion menu
