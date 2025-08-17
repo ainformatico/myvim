@@ -17,3 +17,9 @@ vim.cmd([[
 vim.cmd([[
   autocmd BufWinEnter *.md,*.mdx silent! set ft=markdown
 ]])
+
+vim.cmd([[
+  augroup QuickFix
+    au FileType qf nmap <buffer> <C-h> :cfdo %s/<C-r>"//g<left><left><left>
+  augroup END
+]])
