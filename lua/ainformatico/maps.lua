@@ -22,14 +22,13 @@ vim.keymap.set("n", "<C-h>", "cit")
 vim.keymap.set("i", "<C-h>", "<BS>")
 -- delete key, useful with <c-h> in insert mode
 vim.keymap.set("i", "<C-l>", "<DEL>")
-vim.keymap.set("i", "<C-s>", "<ESC>:w<CR>")
-vim.keymap.set("n", "<C-s>", ":w<CR>")
+vim.keymap.set("n", "<C-s>", "<ESC>:w<CR>")
 -- search and replace selected text
 vim.keymap.set("v", "<C-h>", "\"hy:%s/<C-r>h//gc<left><left><left>")
 -- sort, select lines and sort
 vim.keymap.set("v", "<C-s>", ":sort<CR>")
 -- hide search matches
-vim.keymap.set("n", ",,", ":nohl<CR>")
+vim.keymap.set("n", "\\", ":nohl<CR>")
 -- search and replace in selected area
 vim.keymap.set("v", "<C-g>", ":s/\\%V//gc<left><left><left><left>")
 -- search in selected area
