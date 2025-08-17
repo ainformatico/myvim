@@ -12,6 +12,8 @@ require 'nvim-treesitter.configs'.setup {
         ["if"] = "@function.inner",
         ["ic"] = "@comment.inner",
         ["ac"] = "@comment.outer",
+        ["ii"] = "@conditional.inner",
+        ["ai"] = "@conditional.outer",
         ["ib"] = "@block.inner",
         ["ab"] = "@block.outer",
         ["iv"] = "@assignment.inner",
@@ -75,12 +77,12 @@ require 'nvim-treesitter.configs'.setup {
       -- Use if you want more granular movements
       -- Make it even more gradual by adding multiple queries and regex.
       goto_next = {
-        ["]c"] = "@conditional.inner",
-        ["]C"] = "@conditional.outer",
+        ["]I"] = "@conditional.inner",
+        ["]i"] = "@conditional.outer",
       },
       goto_previous = {
-        ["[c"] = "@conditional.inner",
-        ["[C"] = "@conditional.outer",
+        ["[I"] = "@conditional.inner",
+        ["[i"] = "@conditional.outer",
       }
     },
   },
