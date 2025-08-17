@@ -68,6 +68,18 @@ require('mason-lspconfig').setup({
           mode = "auto"
         }
       })
+    end,
+    tailwindcss = function()
+      require('lspconfig').tailwindcss.setup({
+        filetypes = { "typescriptreact", "html", "elixir", "eelixir", "heex", "astro" },
+        init_options = {
+          userLanguages = {
+            elixir = "html-eex",
+            eelixir = "html-eex",
+            heex = "html-eex",
+          },
+        },
+      })
     end
   }
 })
