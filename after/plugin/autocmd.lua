@@ -23,3 +23,13 @@ vim.cmd([[
     au FileType qf nmap <buffer> <C-h> :cfdo %s/<C-r>"//g<left><left><left>
   augroup END
 ]])
+
+-- Check for file changes when focus is gained
+vim.cmd([[
+  autocmd FocusGained,BufEnter * checktime
+]])
+
+-- Notify when the file has changed
+vim.cmd([[
+  autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+]])
