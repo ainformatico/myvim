@@ -29,11 +29,13 @@ end)
 
 require 'lspconfig'.gdscript.setup {}
 
+local lspconfig = require("lspconfig")
+
 -- to learn how to use mason.nvim with lsp-zero
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = { 'tsserver', 'eslint', 'lua_ls', 'ruby_lsp', 'rubocop', 'gopls' },
+  ensure_installed = { 'ts_ls', 'eslint', 'lua_ls', 'ruby_lsp', 'rubocop', 'gopls' },
   handlers = {
     -- lsp_zero.default_setup,
     -- this first function is the "default handler"
