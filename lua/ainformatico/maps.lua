@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 vim.keymap.set("n", "]p", "p=`]")
 vim.keymap.set("n", "]P", "P=`]")
 
