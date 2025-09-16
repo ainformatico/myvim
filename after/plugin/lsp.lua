@@ -1,103 +1,113 @@
-local lsp_zero = require('lsp-zero')
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local opts = { buffer = args.buf }
 
-lsp_zero.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp_zero.default_keymaps({ buffer = bufnr, exclude = { 'K' } })
+    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition({ reuse_win = true }) end, opts)
+    vim.keymap.set("n", "<C-w>gd", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", opts)
+    vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
+    vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
+    vim.keymap.set("n", "<C-w><C-v>", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR> | <C-w>L", opts)
+    vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
+    vim.keymap.set('n', 'gh', function() vim.lsp.buf.hover() end, opts)
+    vim.keymap.set('n', '<C-j>', function() vim.diagnostic.goto_next() end, opts)
+    vim.keymap.set('n', '<C-k>', function() vim.diagnostic.goto_prev() end, opts)
+    vim.keymap.set('n', '<leader>do', function() vim.lsp.buf.code_action() end, opts)
+    vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end, opts)
+    vim.keymap.set('n', '<leader>h', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, opts)
 
-  -- lsp_zero.buffer_autoformat()
+    vim.keymap.set({ 'n', 'x' }, 'gq', function()
+      vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
+    end, opts)
+  end,
+})
 
-  local opts = { buffer = bufnr }
+vim.lsp.config('gdscript', {})
 
-  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition({ reuse_win = true }) end, opts)
-  vim.keymap.set("n", "<C-w>gd", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", opts)
-  vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
-  vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
-  vim.keymap.set("n", "<C-w><C-v>", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR> | <C-w>L", opts)
-  vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
-  vim.keymap.set('n', 'gh', function() vim.lsp.buf.hover() end, opts)
-  vim.keymap.set('n', '<C-j>', function() vim.diagnostic.goto_next() end, opts)
-  vim.keymap.set('n', '<C-k>', function() vim.diagnostic.goto_prev() end, opts)
-  vim.keymap.set('n', '<leader>do', function() vim.lsp.buf.code_action() end, opts)
-  vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end, opts)
-  vim.keymap.set('n', '<leader>h', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, opts)
+vim.lsp.config('lua_ls', {
+  settings = {
+    Lua = {
+      hint = { enable = true },
+      diagnostics = {
+        globals = { 'vim' },
+      },
+    },
+  },
+})
 
-  vim.keymap.set({ 'n', 'x' }, 'gq', function()
-    vim.lsp.buf.format({ async = false, timeout_ms = 10000 })
-  end, opts)
-end)
+vim.lsp.config('ruby_lsp', {
+  single_file_support = false,
 
-require 'lspconfig'.gdscript.setup {}
+  -- make sure to use the `ruby-lsp` shim from `asdf`
+  cmd = { os.getenv("HOME") .. "/.asdf/shims/ruby-lsp" },
+})
 
-local lspconfig = require("lspconfig")
-
--- to learn how to use mason.nvim with lsp-zero
--- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
-require('mason').setup({})
-require('mason-lspconfig').setup({
-  ensure_installed = { 'ts_ls', 'eslint', 'lua_ls', 'ruby_lsp', 'rubocop', 'gopls' },
-  handlers = {
-    -- lsp_zero.default_setup,
-    -- this first function is the "default handler"
-    -- it applies to every language server without a "custom handler"
-    function(server_name)
-      require('lspconfig')[server_name].setup({})
-    end,
-    lua_ls = function()
-      local lua_opts = lsp_zero.nvim_lua_ls()
-      lua_opts.settings.Lua.hint = { enable = true }
-
-      require('lspconfig').lua_ls.setup(lua_opts)
-    end,
-    -- this is the "custom handler" for `ruby_lsp`
-    ruby_lsp = function()
-      require('lspconfig').ruby_lsp.setup({
-        single_file_support = false,
-
-        -- make sure to use the `ruby-lsp` shim from `asdf`
-        cmd = { os.getenv("HOME") .. "/.asdf/shims/ruby-lsp" },
-      })
-    end,
-    eslint = function()
-      require('lspconfig').eslint.setup({
-        codeActionOnSave = {
-          enable = true,
-          mode = "all"
-        },
-        workingDirectory = {
-          mode = "auto"
-        }
-      })
-    end,
-    tailwindcss = function()
-      require('lspconfig').tailwindcss.setup({
-        filetypes = { "typescriptreact", "html", "elixir", "eelixir", "heex", "astro" },
-        init_options = {
-          userLanguages = {
-            elixir = "html-eex",
-            eelixir = "html-eex",
-            heex = "html-eex",
-          },
-        },
-      })
-    end
+vim.lsp.config('eslint', {
+  codeActionOnSave = {
+    enable = true,
+    mode = "all"
+  },
+  workingDirectory = {
+    mode = "auto"
   }
 })
 
+vim.lsp.config('tailwindcss', {
+  filetypes = { "typescriptreact", "html", "elixir", "eelixir", "heex", "astro" },
+  init_options = {
+    userLanguages = {
+      elixir = "html-eex",
+      eelixir = "html-eex",
+      heex = "html-eex",
+    },
+  },
+})
+
+vim.lsp.config('pyright', {
+  settings = {
+    python = {
+      analysis = {
+        extraPaths = { vim.fn.getcwd() .. "/src" }, -- or a custom absolute path
+      },
+    },
+  }
+})
+
+require('mason').setup({})
+
+require('mason-lspconfig').setup({
+  ensure_installed = { 'ts_ls', 'eslint', 'lua_ls', 'ruby_lsp', 'rubocop', 'gopls' },
+})
+
 local cmp = require('cmp')
-local cmp_format = require('lsp-zero').cmp_format({ details = true })
 
 cmp.setup({
-  sources = {
+  snippet = {
+    expand = function(args)
+      vim.snippet.expand(args.body)
+    end,
+  },
+  sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'buffer' },
     { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lua' }
-  },
-
-  --- (Optional) Show source name in completion menu
-  formatting = cmp_format,
+  }, {
+    { name = 'buffer' },
+  }),
+  formatting = {
+    format = function(entry, vim_item)
+      vim_item.menu = ({
+        buffer = "[Buffer]",
+        luasnip = "[LuaSnip]",
+        nvim_lsp = "[LSP]",
+        nvim_lua = "[NVIM_LUA]",
+        path = "[Path]",
+      })[entry.source.name]
+      return vim_item
+    end,
+  }
 })
+
 
 local util = require("conform.util")
 
