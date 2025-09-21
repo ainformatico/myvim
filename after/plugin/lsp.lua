@@ -94,6 +94,11 @@ cmp.setup({
   }, {
     { name = 'buffer' },
   }),
+  mapping = cmp.mapping.preset.insert({
+    ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+    ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  }),
   formatting = {
     format = function(entry, vim_item)
       vim_item.menu = ({
