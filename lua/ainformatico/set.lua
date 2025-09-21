@@ -27,3 +27,4 @@ vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldtext = ""
 vim.opt.foldlevelstart = 5
 vim.o.autoread = true
+vim.o.winborder = 'rounded'
